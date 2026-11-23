@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light dark" />
+<meta name="description" content="Brenden Renn tracks the Monkey Pig Index, ten companies building AI, in plain English. Holdings, stakes, and the Brenden Test: does the spending earn its money back?" />
+<link rel="icon" href="data:," />
+<title>Monkey Pig Index Wiki | Brenden Renn</title>
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f8f9fa; --bg3:#eaecf0; --ink:#202122; --muted:#54595d; --faint:#72777d;
+  --link:#3366cc; --link-visited:#795cb2; --border:#a2a9b1; --border2:#c8ccd1;
+  --accent:#006400; --warn:#8a6d00; --bad:#b32424; --good:#14866d;
+  --infobox-bg:#f8f9fa; --toc-bg:#f8f9fa; --chip:#eaf3ff;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#101418; --bg2:#1a1f24; --bg3:#242b31; --ink:#e8eaed; --muted:#a7adb3; --faint:#8a9299;
+    --link:#7aa5e8; --link-visited:#b39ddb; --border:#3a424a; --border2:#2c333a;
+    --infobox-bg:#1a1f24; --toc-bg:#1a1f24; --chip:#1c2b3d; --accent:#7bd88a; }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.65}
+button,[role="button"],select,summary,input:not([type="checkbox"]){min-height:2.25rem}
+a{color:var(--link);text-decoration:none;cursor:pointer}
+a:hover{text-decoration:underline}
+.topbar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border2);display:flex;gap:.6rem;align-items:center;padding:.5rem .8rem;flex-wrap:wrap}
+.topbar .brand{font-family:var(--serif);font-weight:700;font-size:1.05rem;white-space:nowrap}
+.topbar .brand span{font-weight:400;color:var(--muted);font-size:.8rem}
+.searchwrap{flex:1;min-width:180px;max-width:560px;position:relative}
+.searchwrap input{width:100%;padding:.5rem .7rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--ink);font-size:1rem}
+.searchresults{position:absolute;left:0;right:0;top:calc(100% + 4px);background:var(--bg);border:1px solid var(--border);border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.18);max-height:55vh;overflow:auto;display:none}
+.searchresults.open{display:block}
+.searchresults button{display:block;width:100%;text-align:left;background:none;border:none;border-bottom:1px solid var(--border2);padding:.6rem .8rem;cursor:pointer;color:var(--ink);font-size:.95rem}
+.searchresults button small{display:block;color:var(--muted)}
+.menuBtn{border:1px solid var(--border);background:var(--bg2);border-radius:4px;padding:.4rem .7rem;cursor:pointer;color:var(--ink)}
+.layout{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto}
+.sidebar{width:248px;flex:0 0 248px;padding:1rem .8rem 2rem;position:sticky;top:57px;max-height:calc(100vh - 57px);overflow:auto;font-size:.9rem}
+.sidebar h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin:1rem 0 .3rem}
+.sidebar a{display:block;padding:.28rem .4rem;border-radius:4px;color:var(--ink)}
+.sidebar a:hover{background:var(--bg2);text-decoration:none}
+.sidebar a.active{background:var(--chip);font-weight:600}
+.sidebar a .tk{color:var(--muted);font-size:.78rem}
+main{flex:1;min-width:0;padding:1rem 1.4rem 4rem;max-width:980px}
+h1.article{font-family:var(--serif);font-weight:400;font-size:2rem;line-height:1.2;border-bottom:1px solid var(--border);padding-bottom:.35rem;margin:.2rem 0 .4rem}
+.tagline{color:var(--muted);font-size:.88rem;margin-bottom:1rem}
+h2{font-family:var(--serif);font-weight:400;font-size:1.45rem;border-bottom:1px solid var(--border2);padding-bottom:.2rem;margin:1.6rem 0 .6rem}
+h3{font-size:1.08rem;margin:1.1rem 0 .4rem}
+p{margin:.55rem 0}
+ul,ol{margin:.4rem 0 .8rem;padding-left:1.4rem}
+li{margin:.25rem 0}
+table.data{border-collapse:collapse;width:100%;margin:.7rem 0;font-size:.92rem}
+table.data th,table.data td{border:1px solid var(--border2);padding:.45rem .6rem;text-align:left;vertical-align:top}
+table.data th{background:var(--bg2);font-weight:600}
+table.data td.num,table.data th.num{text-align:right;font-variant-numeric:tabular-nums}
+.infobox{float:right;width:300px;margin:.2rem 0 1rem 1.2rem;border:1px solid var(--border);background:var(--infobox-bg);font-size:.86rem;line-height:1.45}
+.infobox .ib-title{background:var(--bg3);font-weight:700;text-align:center;padding:.5rem;font-size:.95rem}
+.infobox table{width:100%;border-collapse:collapse}
+.infobox th,.infobox td{padding:.4rem .55rem;border-top:1px solid var(--border2);vertical-align:top;text-align:left}
+.infobox th{width:38%;font-weight:600;background:transparent}
+.toc{background:var(--toc-bg);border:1px solid var(--border);display:inline-block;padding:.6rem 1.2rem .6rem .8rem;margin:.6rem 0;font-size:.9rem;max-width:100%}
+.toc .toc-t{font-weight:700;text-align:center;margin-bottom:.3rem}
+.toc ol{margin:0;padding-left:1.3rem}
+.toc a{color:var(--link)}
+.label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.03em;border:1px solid var(--border);border-radius:3px;padding:.05rem .35rem;vertical-align:middle;white-space:nowrap}
+.label.proven{color:var(--good);border-color:var(--good)}
+.label.reported{color:var(--link);border-color:var(--link)}
+.label.nr{color:var(--muted)}
+.label.unv{color:var(--bad);border-color:var(--bad)}
+.notebox{border:1px solid var(--border2);background:var(--bg2);padding:.7rem .9rem;margin:.8rem 0;font-size:.93rem}
+.callout{border-left:4px solid var(--accent);background:var(--bg2);padding:.7rem .9rem;margin:.8rem 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.8rem 0}
+.card{border:1px solid var(--border2);padding:.8rem .9rem;background:var(--bg)}
+.card h3{margin-top:0}
+.pill{display:inline-block;background:var(--chip);border-radius:20px;padding:.1rem .6rem;font-size:.8rem;margin:.1rem}
+.notation{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--bg2);border:1px solid var(--border2);padding:.05rem .35rem;border-radius:3px;font-size:.92em;white-space:nowrap}
+.small{font-size:.86rem;color:var(--muted)}
+.foot{border-top:1px solid var(--border2);margin-top:2.5rem;padding-top:.8rem;font-size:.85rem;color:var(--muted)}
+@media (max-width:860px){
+  .sidebar{display:none;position:fixed;left:0;top:57px;bottom:0;background:var(--bg);z-index:60;width:280px;flex:none;box-shadow:4px 0 20px rgba(0,0,0,.2);max-height:none}
+  .sidebar.open{display:block}
+  .layout{display:block}
+  main{padding:1rem .95rem 4rem}
+  .infobox{float:none;width:100%;margin:0 0 1rem}
+  .grid2{grid-template-columns:1fr}
+  h1.article{font-size:1.6rem}
+  table.data{font-size:.8rem}
+  table.data th,table.data td{padding:.35rem .4rem;overflow-wrap:break-word}
+}
+/* ---- Visualizations (charts-first) ---- */
+.vizpanel{border:1px solid var(--border);background:var(--bg);padding:.9rem 1rem 1rem;margin:1rem 0;clear:both}
+.vizpanel h2{margin-top:.1rem}
+.vizpanel .vizintro{font-size:.93rem;color:var(--muted);margin:.2rem 0 .8rem}
+.vizgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.vizcard{border:1px solid var(--border2);background:var(--bg2);padding:.75rem .85rem;min-width:0}
+.vizcard.wide{grid-column:1/-1}
+.vizcard h3{margin:.05rem 0 .3rem;font-size:1rem}
+.viztake{font-size:.92rem;margin:.15rem 0 .5rem}
+.vizbtns{display:flex;flex-wrap:wrap;gap:.35rem;margin:.45rem 0}
+.vbtn{border:1px solid var(--border);background:var(--bg);color:var(--ink);padding:.28rem .65rem;border-radius:20px;cursor:pointer;font-size:.8rem;line-height:1.3;min-height:2rem}
+.vbtn:hover{border-color:var(--link)}
+.vbtn[aria-pressed="true"]{background:var(--link);color:#fff;border-color:var(--link)}
+.vbtn.sub[aria-pressed="true"]{background:var(--good);border-color:var(--good)}
+.vizbody svg{width:100%;height:auto;display:block}
+.vizbody table.data{margin:.3rem 0;background:var(--bg)}
+.viznote{font-size:.8rem;color:var(--muted);margin:.45rem 0 0}
+.vizlegend{font-size:.82rem;margin:.35rem 0 0;padding:0;list-style:none}
+.vizlegend li{margin:.18rem 0}
+.sw{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;margin-right:.45rem;vertical-align:baseline}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.6rem 0}
+.step{border:1px solid var(--border2);background:var(--bg2);padding:.7rem .8rem}
+.step .when{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--link)}
+.step h4{margin:.25rem 0 .3rem;font-size:.98rem}
+.step p{font-size:.9rem;margin:.2rem 0}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.6rem 0;text-align:center}
+.trio .who{border:1px solid var(--border2);background:var(--bg2);padding:.7rem .5rem;font-weight:700}
+.trio .who small{display:block;font-weight:400;color:var(--muted)}
+.venturebox{border:2px solid var(--accent);padding:.7rem .9rem;text-align:center;font-weight:700;margin:.2rem 0 .6rem}
+body.charts-only table.data{display:none}
+@media (max-width:860px){ .vizgrid{grid-template-columns:1fr} .steps,.trio{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <button class="menuBtn" id="menuBtn" aria-label="Toggle contents menu">☰ Contents</button>
+  <div class="brand">Monkey Pig Wiki <span>· the AI buildout, in plain English</span></div>
+  <div class="searchwrap">
+    <input id="search" type="search" placeholder="Search the wiki — try Nvidia, Anthropic, Brenden Test…" aria-label="Search the wiki" />
+    <div class="searchresults" id="searchResults"></div>
+  </div>
+  <button class="menuBtn" id="numToggle" aria-pressed="false" title="Show or hide the detailed data tables under the charts">Tables: On</button>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="Wiki contents"></nav>
+  <main id="article" tabindex="-1"></main>
+</div>
+<script>
+var TITLES = {home:"Monkey Pig Index",nvidia:"Nvidia",microsoft:"Microsoft",apple:"Apple",alphabet:"Alphabet",micron:"Micron",tsmc:"TSMC",verizon:"Verizon",att:"AT&T",tesla:"Tesla",intel:"Intel",brendentest:"The Brenden Test",notation:"The Notation",anthropic:"Anthropic",satellite:"Satellite Joint Venture",memory:"The Memory Shortage",gates:"The Tesla Three Gates",berkshire:"Berkshire Hathaway",softbank:"SoftBank",brookfield:"Brookfield",blackrock:"BlackRock",ast:"AST SpaceMobile",marvell:"Marvell",openai:"OpenAI",mistral:"Mistral AI",verily:"Verily",figure:"Figure AI",watchlist:"Watchlist",sources:"Sources and Labels"};
+function wl(id,label){ return '<a href="#/'+id+'" data-page="'+id+'">'+(label||TITLES[id]||id)+'</a>'; }
+var P = {};
+P.home = { title:"Monkey Pig Index", cat:"Home", tag:"From the wiki's main page · An invented index of ten companies, tracked in plain English",
+body:
+'<p>The <b>Monkey Pig Index</b> is an invented index of ten companies, built by Brenden Renn for a weekly YouTube news video (@brendenrenn). The ten are the companies building artificial intelligence (AI) and the data centers that run it — the chips, the memory, the cloud software, and the phone networks.</p>'+
+'<p>Brenden does not trade stocks. The index is a way to learn how the AI buildout works, to present it plainly, and — most important — to spot trouble early and avoid big market slides like the one on Oct 29–30, 2026.</p>'+
+'<p>The ten are split into two groups of five. The <b>Monkeys</b> are '+wl('apple')+', '+wl('micron')+', '+wl('nvidia')+', '+wl('alphabet')+', and '+wl('tsmc')+'. The <b>Pigs</b> are '+wl('intel')+', '+wl('tesla')+', '+wl('microsoft')+', '+wl('verizon')+', and '+wl('att','AT&T')+'. The split is a running joke with a real point: the Monkeys mostly make or sell the stuff AI runs on, and the Pigs are a mixed bag of builders, buyers, and carriers.</p>'+
+'<h2>The index at a glance</h2><ul>'+
+'<li>Ten companies, ranked by EBITA — earnings before interest, tax, and amortization, roughly the profit from day-to-day operations. Combined trailing EBITA is about <b>$939 billion</b>. '+wl('nvidia')+' is #1 at $198.29B; '+wl('intel')+' is #10 at $2.66B.</li>'+
+'<li>Combined total assets: <b>$4,266.2B</b> at the latest count (2026), up from $1,450.6B in 2015 and $2,161.6B in 2020. Combined revenue (latest full year): $2,096.58B. Combined free cash flow (cash left after spending): $504.21B. Combined cash and short-term investments: $696.00B. Combined CapEx (spending on buildings and equipment): $345.12B. Combined R&amp;D (research and development): $195.45B. <i>These combined figures mix fiscal years — the companies end their years on different dates — so they are not a single calendar-year total.</i></li>'+
+'<li>The US data-center pipeline (verified, Oct 2026): <b>102 active US projects, 99.1 GW of capacity planned, 50.5 GW under construction</b>. Texas alone: 27.5 GW planned, 14.2 GW under construction across 28 projects. The buildout phase is mixed — construction plus energization/commissioning — and turning the power on at full scale is the bottleneck where projects slip 12–24 months.</li>'+
+'<li>Who actually inflected on CapEx (spending jumped): '+wl('alphabet')+', '+wl('microsoft')+', '+wl('micron')+', '+wl('tsmc')+' (guidance), '+wl('tesla')+' (guidance) — a real supercycle. '+wl('apple')+', '+wl('intel')+', '+wl('verizon')+', and '+wl('att','AT&T')+' are flat to down, with no AI CapEx jump. '+wl('nvidia')+'’s own CapEx is small — its revenue <i>is</i> the supercycle (seller, not builder).</li>'+
+'<li>The one question behind the whole index: '+wl('brendentest','The Brenden Test')+' — “Does the spending earn its money back?”</li>'+
+'<li>The ownership web: <b>123 recorded links</b> between the ten and their partners, written in '+wl('notation','The Notation')+' — a company in brackets means someone owns a piece of it, a minus sign means the company spent money to buy in.</li></ul>'+
+'<h2>EBITA ranking — the ten compared</h2>'+
+'<svg viewBox="0 0 640 300" width="100%" role="img" aria-label="Bar chart of trailing EBITA for the ten companies, Nvidia highest at 198 billion dollars, Intel lowest at 2.7 billion" style="max-width:640px;display:block;margin:.6rem 0"><g font-size="12" fill="currentColor">'+
+[['Nvidia',198.29],['Microsoft',167.39],['Apple',162.96],['Alphabet',157.90],['Micron',99.34],['TSMC',90.73],['Verizon',32.45],['AT&T',23.81],['Tesla',3.47],['Intel',2.66]].map(function(r,i){var w=Math.max(4,r[1]/198.29*400);var y=8+i*29;return '<text x="0" y="'+(y+13)+'" width="80">'+r[0]+'</text><rect x="86" y="'+y+'" width="'+w+'" height="17" fill="#3366cc" opacity="'+(i<5?0.9:0.55)+'"></rect><text x="'+(92+w)+'" y="'+(y+13)+'">$'+r[1].toFixed(2)+'B</text>';}).join('')+
+'</g></svg><p class="small">Trailing-twelve-months EBITA, per-company periods as listed on each company page. Combined total ≈ $939B.</p>'+
+'<h2>The ten companies</h2>'+
+'<table class="data"><tr><th>Rank (EBITA)</th><th>Company</th><th>Tranche</th><th>Key project</th><th>Who’s in charge</th></tr>'+
+[['#1','nvidia','Nvidia','Monkey','Vera Rubin chips','Colette Kress, interim CEO'],['#2','microsoft','Microsoft','Pig','Maia chip and Copilot','Satya Nadella, CEO'],['#3','apple','Apple','Monkey','iPhone 20','John Ternus, CEO'],['#4','alphabet','Alphabet','Monkey','Tensor chip and AI models','Sundar Pichai, CEO'],['#5','micron','Micron','Monkey','HBM4 memory','Sanjay Mehrotra, CEO'],['#6','tsmc','TSMC','Monkey','Fab buildouts','C.C. Wei, CEO'],['#7','verizon','Verizon','Pig','ISAC (towers that sense)','Dan Schulman, CEO'],['#8','att','AT&T','Pig','Open RAN (mix-and-match tower parts)','John Stankey, CEO'],['#9','tesla','Tesla','Pig','Optimus robots and SRAM','Elon Musk, CEO'],['#10','intel','Intel','Pig','Foundry (making chips for others)','Lip-Bu Tan, CEO']].map(function(r){return '<tr><td>'+r[0]+'</td><td>'+wl(r[1],r[2])+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td><td>'+r[5]+'</td></tr>';}).join('')+
+'</table>'+
+'<h2>How to use this wiki</h2><p>Each company has its own page, laid out in the same 13 sections as the Muse_Data spreadsheet, plus its ownership links, its test, and who’s in charge. Concept pages explain '+wl('brendentest','The Brenden Test')+', '+wl('notation','The Notation')+', '+wl('anthropic')+', the '+wl('satellite','Satellite Joint Venture')+', '+wl('memory','The Memory Shortage')+', and '+wl('gates','The Tesla Three Gates')+'. Partner pages cover '+wl('berkshire','Berkshire Hathaway')+', '+wl('softbank','SoftBank')+', and '+wl('brookfield')+'. The '+wl('watchlist')+' holds things that can’t be written as links yet. '+wl('sources','Sources and Labels')+' explains what PROVEN, REPORTED, and n/r mean. '+wl('blackrock','BlackRock')+' — the biggest holder of the ten — has its own short page too.</p>'+
+'<h2>The main objective</h2><p>Avoiding market slides like Oct 29–30, 2026 matters more than the weekly video. The video is how Brenden learns and presents; the web of ledgers is what decides when to reduce holdings. The working hypothesis (until disproven): selloffs like Oct 29–30 are <b>not</b> caused by a small revenue miss alone — the miss is the trigger, not the cause. The cause is stretched valuation (prices already high) plus profit-taking after a run, plus spending outrunning cash.</p>'
+};
+P.brendentest = { title:"The Brenden Test", cat:"Concepts", tag:"The decision rule for the whole index",
+body:'<p>The Brenden Test is one question: <b>“Does the spending earn its money back?”</b> It is the decision rule for the whole index. A company is spending billions building data centers and buying chips. The test asks whether that spending turns into money coming back — in revenue, profit, and cash — or whether the company is just burning cash and hoping.</p>'+
+'<h2>How the test works</h2><p>The test uses the public filings (the financial reports companies must file), not headlines. Four things get checked:</p><ul>'+
+'<li>Cash CapEx (capital spending — money spent on buildings and equipment) against operating cash flow (cash the business actually brings in). If spending is bigger than the cash coming in, the company is funding the gap somehow — from savings or debt.</li>'+
+'<li>ROIIC (return on incremental invested capital) — how much extra profit each new dollar of spending produces.</li>'+
+'<li>Utilisation and backlog — whether the data centers being built are actually being used, and whether customers have committed to pay for them.</li>'+
+'<li>Debt and maturities — how much the company owes, and when it has to pay it back.</li></ul>'+
+'<h2>The cash-test scoreboard (filing-verified)</h2><p>'+wl('microsoft')+' passes: in the September 2026 quarter, operating cash flow was $58.0B against cash CapEx of $39.367B, leaving free cash flow (cash left after spending) of $18.633B <span class="label proven">PROVEN · 10-Q</span>. Nine of the ten pass the cash test. Alphabet’s September-quarter cash test is not published in this wiki (on hold).</p>'+
+'<h2>The test in algebra</h2><p>In '+wl('notation','The Notation')+', the test is written as an edge: <span class="notation">A(-b)</span> means company A spent money buying into partner b. The edge only closes when b goes positive — when the investment pays back more than it cost. If b never goes positive, the edge never closes, and it is a <i>failed instantiation</i> (a deal that never paid off).</p>'+
+'<h2>The Microsoft version</h2><p>For '+wl('microsoft')+', the test has a specific form, worked out by Brenden in November 2026: losing competitiveness would show up in the public filings as CapEx declining at the same time as Azure revenue growth declining. The pair is the test. CapEx falling alone could mean the Maia chip is doing more with less — efficiency, not decline. Growth is what decides which it is. CapEx lives on the cash flow statement; Azure revenue lives on the income statement — not the balance sheet. Caveat: the signal matters most while the AI market is still growing; it is weaker once the market saturates (stops growing).</p>'+
+'<p class="small">See also: each company page carries its own version of the test under “The Test.”</p>' };
+P.notation = { title:"The Notation", cat:"Concepts", tag:"Brenden’s shorthand for the ownership web · invented Nov 19, 2026",
+body:'<p>The Notation is Brenden’s own shorthand for the ownership web, invented Nov 19, 2026. It writes every link between companies as a short term, so the whole web reads like algebra.</p>'+
+'<h2>The three forms</h2><ul>'+
+'<li><span class="notation">A(b)</span> — partner b holds a piece of index company A. Cash <b>in</b> from A’s side. Example: <span class="notation">AAPL(BRK)</span> means '+wl('berkshire','Berkshire Hathaway')+' owns '+wl('apple','Apple')+' shares.</li>'+
+'<li><span class="notation">A(-b)</span> — company A spent money to buy into partner b. Cash <b>out</b> from A’s side. Example: <span class="notation">GOOGL(-ANT)</span> means '+wl('alphabet','Alphabet')+' paid to buy into '+wl('anthropic')+'. The edge only closes when b goes positive — when the investment pays back. Otherwise it is a failed instantiation.</li>'+
+'<li><span class="notation">A{B}</span> — an index company holds another index company. Curly braces, decided Nov 20, 2026. Example: <span class="notation">INTC{NVDA}</span> means '+wl('nvidia','Nvidia')+' holds '+wl('intel','Intel')+' shares. Parentheses stay partner-only.</li></ul>'+
+'<h2>Bridges</h2><p>When one partner connects two index companies, it reads <span class="notation">A1(b)A2</span>. Example: <span class="notation">GOOGL(ANT)NVDA</span> would mean '+wl('anthropic')+' connects '+wl('alphabet')+' and '+wl('nvidia')+' (both hold Anthropic). '+wl('blackrock')+' holds all ten, so it bridges all 45 pairs.</p>'+
+'<h2>The rules (decided Nov 19–20, 2026)</h2><ul>'+
+'<li>Variables are tickers (NVDA, AAPL), not numbers. Ranks change; tickers don’t, so old entries stay readable.</li>'+
+'<li><b>No edge until b is named</b> (standing rule, Nov 20, 2026). An edge is written only when the partner is named or the entity exists. Unnamed items stay on the '+wl('watchlist')+'. Brenden’s reason: the name is what makes tracking possible.</li>'+
+'<li>The '+wl('satellite','satellite joint venture')+' stays a three-way placeholder until it is named, then it is written once. No two-way term, because that would hide T-Mobile as the third owner.</li>'+
+'<li>Open question: does an <span class="notation">A(b)</span> edge ever close? Closing is defined only for <span class="notation">A(-b)</span> edges. Brenden’s answer so far: “I don’t know yet.”</li></ul>'+
+'<h2>The count</h2><p><b>123 edges:</b> 54 cash-in <span class="notation">A(b)</span>, 68 cash-out <span class="notation">A(-b)</span>, and 1 curly-brace <span class="notation">INTC{NVDA}</span>. Two items moved off the edge list onto the watchlist when the no-edge-until-named rule was adopted (count 125 → 123): Apple’s Gui’an data center and Alphabet’s $20B unnamed derivative.</p>' };
+P.anthropic = { title:"Anthropic", cat:"Concepts", tag:"The biggest shared asset in the web · five of the ten bought in",
+body:'<p>Anthropic is the AI company behind Claude, a chatbot and AI assistant. It is the biggest shared asset in the Monkey Pig web: five of the ten bought into it together.</p>'+
+'<h2>The $26B placement</h2><p>Before the IPO, Anthropic sold $26B of Class N shares (a special class of stock) in a private placement to seven buyers. Five of the ten took part: '+wl('alphabet')+' $10B, '+wl('nvidia')+' $10B, '+wl('micron')+' $1B, '+wl('microsoft')+' $1B, '+wl('tsmc','TSMC')+' $500M (amounts <span class="label reported">REPORTED</span>; participation <span class="label proven">PROVEN</span>). AMD ($2.5B) and Broadcom ($1B) also took part — they are outside the ten. Alphabet also holds an earlier stake of about 14% <span class="label proven">PROVEN</span>. A separate April 2026 $10B Alphabet investment (Series H) is <b>UNRECONCILED</b> — it may overlap the placement or the 14% stake, so never add the figures together.</p>'+
+'<h2>The IPO</h2><p>Anthropic priced its IPO at <b>$83 a share on Nov 18, 2026</b>, above the $70–$78 range. First trading was Thu Nov 19 on Nasdaq as ANT: first trade $111.50, day-one close $97.17 (up 17% on $83). The offering formally closed Fri Nov 20, 2026, with the underwriters (the banks running the sale) buying every extra share they were allowed — 1.127 billion shares, about $93.5B gross, the largest IPO on record. The $26B placement closed with it, so the five placement edges went from “agreed” to “held.” On Friday Nov 20, ANT closed around $88–89 (sources differ slightly: $88.91 or $88.30), touching $83.05 intraday but never closing below $83 — so the five placement edges stayed b-positive (above what the five paid), just barely.</p>'+
+'<h2>Why it matters to the ten</h2><p>Anthropic is a customer as well as an investment: it rents enormous amounts of computing power. Its filing discloses about <b>$900.9B in committed spending through 2045</b>, mostly renting compute rather than owning data centers, with about $451.6B due before the end of 2030. '+wl('microsoft')+' has committed at least $47.2B and '+wl('alphabet')+' at least about $121.3B of that. Anthropic’s revenue was $33.2B in the first nine months of 2026. In the notation, the five placement edges (<span class="notation">GOOGL(-ANT)</span>, <span class="notation">NVDA(-ANT)</span>, <span class="notation">MSFT(-ANT)</span>, <span class="notation">MU(-ANT)</span>, <span class="notation">TSM(-ANT)</span>) close — go positive — when ANT trades above the $83 the five paid.</p>' };
+P.satellite = { title:"Satellite Joint Venture", cat:"Concepts", tag:"“Big 3 cellular is going interstellar.” — Brenden’s headline",
+body:'<p><i>“Big 3 cellular is going interstellar.”</i> — Brenden’s headline for this story.</p>'+
+'<h2>What it is</h2><p>'+wl('att','AT&T')+', '+wl('verizon')+', and T-Mobile formed a satellite joint venture to end dead zones — places where phone towers don’t reach. The venture will offer satellite coverage that connects directly to ordinary phones (direct-to-device), filling the gaps where towers don’t reach and backing up the network when the ground system fails. Agreement in principle May 14, 2026; definitive agreement signed Oct 1, 2026 <span class="label proven">PROVEN</span>.</p>'+
+'<h2>Who’s in charge</h2><p>Interim CEO <b>Paul Roth</b> (former AT&T/Cingular executive). No permanent CEO has been named. The venture itself is still unnamed — no name, no permanent chief, no launch date. That freshness is the story.</p>'+
+'<h2>How it works</h2><p>The venture owns no satellites. It pools the three carriers’ spectrum (the radio frequencies phones use) and buys satellite coverage from satellite companies. Towers stay primary — satellites fill the gaps. '+wl('att','AT&T')+'’s own satellite partner is '+wl('ast','AST SpaceMobile')+'; '+wl('verizon')+' works with AST SpaceMobile and Skylo. T-Mobile also has a separate direct satellite partner outside the venture. So this is not simply the carriers versus one satellite company — it is the three teaming up so no single satellite company owns the whole game.</p>'+
+'<h2>In the notation</h2><p>The venture is a three-way placeholder until it is named, then it will be written once (decided Nov 20, 2026). No two-way term, because that would hide T-Mobile as the third owner. T-Mobile qualifies for its own partner ledger (publicly traded, linked to two of the ten through the venture) but it is not built yet.</p>' };
+P.memory = { title:"The Memory Shortage", cat:"Concepts", tag:"Brenden’s supply-side test · locked Nov 5, 2026",
+body:'<p>Memory (the chips that store and move data — DRAM and NAND, plus HBM, the stacked fast memory AI needs) has been in short supply since COVID. Prices rose first. The theory, locked Nov 5, 2026: prices drop only when the shortage is fixed from the supply side — new capacity, more output, prices falling because there is more to buy. Demand breaking (people stop buying because prices are too high) does <b>not</b> count as the shortage being fixed.</p>'+
+'<h2>The test</h2><p>Refined by Brenden on Nov 17, 2026: the test is '+wl('micron')+'’s inventory assets going up and staying steady for two quarters. Inventory up because Micron is making more, not because nobody is buying. That is what separates the trigger from demand breaking. Note: assets going up alone is <b>not</b> the trigger — a fab under construction doesn’t put memory on the shelf. The trigger needs supply actually arriving: output up, prices falling because there’s more to buy, or a buyer saying constraints eased because supply improved. <b>The trigger is still OPEN.</b></p>'+
+'<h2>Two timelines</h2><p>Brenden’s framing (Nov 12, 2026): COVID triggered the shortage in 2020, the crisis peaked in 2021, and nearshoring (bringing chip-making back home) followed with 2022 law and land decisions and fab builds that take five to eight years. The AI data-center buildout was triggered separately at the end of 2022, and its money jumped in the first quarter of 2024. An AI data center is defined by what’s inside it — GPUs, accelerators, and stacked fast memory — not by the building.</p>'+
+'<h2>Who’s on which side</h2><p>'+wl('micron')+' sells memory, so the shortage lifts Micron. '+wl('apple')+' buys memory, so the same shortage squeezes Apple’s margins. They are on opposite sides of the same shortage.</p>' };
+P.gates = { title:"The Tesla Three Gates", cat:"Concepts", tag:"Brenden’s theory for Tesla · set Nov 6, 2026",
+body:'<p>Brenden’s theory for '+wl('tesla')+', set Nov 6, 2026. It has three gates (stages), each bigger than the last, and it assumes the memory bottleneck is holding Tesla’s price back (that assumption is <span class="label unv">UNVERIFIED</span>). The theory is “Storonsky-gated” — named for Nik Storonsky, the founder-operator Brenden tracks as the model of a trader who runs a company like a trader.</p>'+
+'<h2>Gate 1 — NVIDIA escape (May 2027)</h2><p>Tesla designs its own SRAM (static memory — fast, small memory built into chips). If Tesla can design its own memory, it escapes depending on '+wl('nvidia','Nvidia')+'’s chips. Trigger: an SRAM-design headline is a buy alert on the Tesla–Nvidia pair.</p>'+
+'<h2>Gate 2 — Terafab volume (Q3 2028)</h2><p>Tesla finds a way to make its own SRAM at volume in Terafab, its planned chip plant in Grimes County, Texas ($16.8B first phase, announced Aug 6, 2026). Trigger: Terafab updates are an alert on the Tesla–'+wl('tsmc','TSMC')+' pair, in either direction. TSMC’s condition, set by CEO C.C. Wei: TSMC doesn’t rent its fabs — if TSMC is in, TSMC runs the fab, because the chip-making process <i>is</i> the company.</p>'+
+'<h2>Gate 3 — Optimus deployment</h2><p><i>First outside-company deliveries planned end 2027, at volume after Q3 2028.</i> Optimus robots ship to consumers with Tesla’s own SRAM inside. This is the <b>SELL call</b> — the one exception to Brenden’s “just fucking hold” motto. Brenden’s reason (Nov 17, 2026): once Optimus is shipping to consumers, most of the leg work is already done — the story is realized, so sell despite any hype around the launch.</p>'+
+'<h2>Related watch</h2><p>If '+wl('tesla')+' makes a deal with '+wl('micron')+', flag it early — take the signal before Wall Street prices it in. (No such deal has been announced. A Nov 3 feed claim of a Micron–Tesla memory allocation deal was corrected in the feed on Nov 4 — it is not a live deal.)</p>' };
+</script>
+<script>
+function ib(title, rows){ var h='<div class="infobox"><div class="ib-title">'+title+'</div><table>'; rows.forEach(function(r){ h+='<tr><th>'+r[0]+'</th><td>'+r[1]+'</td></tr>'; }); return h+'</table></div>'; }
+function finTable(rows){ var h='<table class="data"><tr><th>Year</th><th class="num">Revenue</th><th class="num">Free cash flow</th><th class="num">Cash &amp; investments</th><th class="num">Total debt</th></tr>'; rows.forEach(function(r){ h+='<tr><td>'+r[0]+'</td><td class="num">'+r[1]+'</td><td class="num">'+r[2]+'</td><td class="num">'+r[3]+'</td><td class="num">'+r[4]+'</td></tr>'; }); return h+'</table>'; }
+
+P.nvidia = { title:"Nvidia", cat:"Companies", tag:"Nvidia Corporation · NVDA · Monkey · EBITA rank #1",
+infobox: ib("Nvidia Corporation (NVDA)", [["Tranche","Monkey"],["EBITA rank","#1 of 10 ($198.29B)"],["Fiscal year","Ends late January"],["Interim CEO","Colette Kress (also CFO)"],["Board chair","Harvey C. Jones"],["Key project","Vera Rubin chips"],["Camera line","“Is the spending paying for itself?”"]]),
+body:'<p><b>Nvidia</b> makes the chips that run AI — the graphics processors (GPUs) inside nearly every AI data center. It is the supplier, not the spender: other companies buy Nvidia’s chips to build their data centers. Data Center revenue is <b>92.9%</b> of Nvidia’s total revenue. The question that decides whether Nvidia is in trouble is not its stock price — it is whether Data Center revenue keeps growing.</p>'+
+'<h2>1. At a Glance</h2><p>CapEx (spending on buildings and equipment) grew 86.7% in FY2026 to $6.042B — but from a small base; Nvidia’s own spending is tiny next to the hyperscalers (the giant cloud companies) because Nvidia sells the picks and shovels rather than digging. Data Center revenue was $193.7B in FY2026, up 68.2%. Financing verdict: self-funded, free cash flow squeezed but positive. Signal: <b>GROWING</b> (as supplier).</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $0.976 · 2023 $1.833 · 2024 $1.069 · 2025 $3.236 · 2026 $6.042. FY2026 is 6.2× FY2022, but the absolute number is small next to the cloud giants. R&amp;D (research and development) was 8.6% of revenue in 2026, falling from 27.2% in 2023 as revenue outgrew research spending. Last four quarters of CapEx: Oct 2025 $1.636B, Jan 2026 $1.284B, Apr 2026 $1.757B, Jul 2026 $2.677B.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of making the product): 2022 64.9% · 2023 56.9% · 2024 72.7% · 2025 75.0% · 2026 71.1%. The 2023 dip was the pre-AI inventory correction; 71.1% in FY2026 is still about 6 points above FY2022. FY2026: gross profit $153.46B on revenue of $215.94B.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Total debt here means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["FY2024","$60.92","$27.02","$25.98","$9.71"],["FY2025","$130.50","$60.85","$43.21","$8.46"],["FY2026","$215.94","$96.68","$62.56","$8.47"]])+'<p>Net cash (more cash than debt): $54.09B. Operating cash flow n/r in this table.</p>'+
+'<h2>5. Operations</h2><p>No Nvidia-owned hyperscale AI campus is verified — Nvidia is the supplier, not a campus owner. Its DSX Pod (a shipping-container unit holding 7 Vera Rubin racks) is a product, with deliveries expected early 2027. Reference only (customers, <b>not</b> Nvidia’s own sites): Stargate Abilene in Texas (Crusoe/Oracle for '+wl('openai','OpenAI')+', using Nvidia GB200 chips) — 1.2 GW total planned, 8 buildings, first 2 operating since Sep 2025 with 200+ MW; 6 of 8 delivered per an Oct 14, 2026 tracker — do not present as fully complete. Meta’s Hyperion (Louisiana, 5 GW planned) and Prometheus (Ohio, 1 GW scaling to 1.5 GW) — no confirmed full energized figure as of Oct 28, 2026.</p>'+
+'<h2>6. Outlook</h2><p>No own-CapEx guidance. FY2028 revenue growth outlook about 70% (raised to about 75% on the Nov 17, 2026 earnings call — see The Test). Customer cloud backlog over $2T is an industry figure, <b>not</b> Nvidia’s own backlog (RPO, or remaining performance obligation — money customers have committed to pay). Nvidia’s supply-related commitments were $119B (press) at the sheet cutoff; the Nov 17 earnings release put supply and capacity commitments at $390B, up from $279B the quarter before. No cuts or pauses found.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Q2 FY2027 (ended Jul 26, 2026): revenue $96.22B, up 106% year-on-year, up 18% on the quarter.</li><li><span class="label unv">UNVERIFIED</span> — do not present as settled: one aggregator shows long-term debt of $32.366B at Jul 2026 vs $7.469B at Jan 2026. Needs 10-Q verification.</li><li>Sources: Finbox, Macrotrends, Fool (FY2028 outlook, Q2 FY2027 call).</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>FY2026, ended Jan 2026 — Revenue $215.94B · Free cash flow $96.68B · Cash &amp; short-term investments $62.56B · CapEx $6.04B · R&amp;D $18.50B · Gross margin 71.1%.</p>'+
+'<h2>9. EBITA</h2><p>Rank #1 of 10. Trailing-twelve-months EBITA <b>$198.29B</b> (operating income $197.58B + amortization $0.71B). Period: Jul 27, 2025 to Jul 26, 2026. EBITA share: 21.1% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Jul 26, 2026)</h2><p>Total assets $320.3B · Cash $22.4B · Short-term investments $76.9B · Receivables (money owed by customers) $63.1B · Inventory $31.6B · Property, plant and equipment $14.3B · Long-term investments $51.2B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $7.2B · FY2020 $17.3B · FY2026 $206.8B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2026 total assets up 85.3% on the year. The growth is accelerating: +59.6% (FY2024), +69.8% (FY2025), +85.3% (FY2026).</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 1,940.9M vs 1,792.0M. 2. Vanguard Capital Mgmt 1,540.6M vs ~1,920.0M. 3. State Street 1,025.1M vs 988.2M. 4. FMR (Fidelity) 932.8M vs 1,741.0M — Fidelity cut 93.2M shares in Q3 2026, about 9%, the biggest cut by share count in the quarter. 5. Geode 613.7M vs 380.1M. Note: Vanguard split into two separately filing advisers in Jan 2026; the 2020–2025 figures are the old combined Vanguard, the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. Combined, Vanguard is the largest Nvidia holder (2,052.8M shares).</p>'+
+'<h2>Stakes It Holds</h2><p>Nvidia holds stakes in <b>19 partners</b> (cash out — it spent to buy in). The biggest: '+wl('anthropic')+' $10B in the placement (<span class="notation">NVDA(-ANT)</span>); '+wl('openai','OpenAI')+' $30B direct equity, Feb 2026 round <span class="label reported">REPORTED</span>; MediaTek $3.5B convertible bonds (Aug 31, 2026) <span class="label proven">PROVEN</span>; '+wl('marvell')+' $2.0B convertible preferred (Mar 31, 2026) <span class="label proven">PROVEN</span>; Lumentum $2.0B convertible preferred <span class="label proven">PROVEN</span>; SB Energy $1.5B prepaid forward plus $1.5B further commitment; CoreWeave 47,213,353 shares, $4.11B (Q3 13F) <span class="label proven">PROVEN</span>; Coherent 7,788,161 shares, $2.24B (Q3 13F); Synopsys 4,354,077 shares, $1.89B (Q3 13F); Nokia ADR 72,859,751 shares, $738.8M (Q3 13F); Nebius beneficial 22,256,412 shares, 9.3% of class <span class="label proven">PROVEN</span>; Corning warrants, $500M paid <span class="label proven">PROVEN</span>; IREN investment rights up to 30,000,000 shares at $70 (paid nothing) <span class="label proven">PROVEN</span>; '+wl('verily')+' equity investor Sep 9, 2026 <span class="label proven">PROVEN</span>, amount n/r; '+wl('mistral','Mistral AI')+' Series B/C/D participant <span class="label reported">REPORTED</span>, amounts n/r; '+wl('figure','Figure AI')+' Series B + C <span class="label reported">REPORTED</span>, amounts n/r; Generate Biomedicines 833,325 shares, $12.5M (Q3 13F); Helix Digital Infrastructure founding investor <span class="label reported">REPORTED</span>, commitment n/r; '+wl('brookfield')+' AI Infrastructure Fund anchor investor, $2B <span class="label reported">REPORTED</span> (single-source, unconfirmed). Plus the index-holds-index stake: <span class="notation">INTC{NVDA}</span> — 161,082,488 '+wl('intel')+' shares, $19.37B (Q3 13F) <span class="label proven">PROVEN</span>, cut from 214,776,632 in Q2. The <b>only</b> direct holding link between any two of the ten.</p>'+
+'<h2>The Test</h2><p>Brenden’s call (Nov 14, 2026): “Nvidia is about to tank.” The test: Data Center revenue shrinking two quarters running. Q3 FY2027 (reported Nov 17, 2026, from Nvidia’s own 8-K): total revenue $115.8B beat the $108B guide; Data Center $107.6B, up 21% on Q2’s $89.0B (Hyperscale $60.1B, AI Clouds/Industrial/Enterprise $47.5B), 92.9% of revenue; adjusted EPS $2.68; gross margin 74.8%; Q4 guide $130.0B ±3% (vs ~$125B analyst average) with margin guide stepping down to 71–72%; free cash flow $43.8B; operating cash flow $48.3B; $28.1B returned to shareholders; supply commitments $390B (up from $279B); total future commitments $518B; guarantees $118B maximum exposure (no payments made); Vera Rubin NVL72 shipping, called the fastest product ramp in company history.</p><div class="callout"><b>Tank-call check 1 of 2: FAILS, decisively.</b> For the call to hold, Data Center must now shrink in Q4 FY2027 <i>and</i> Q1 FY2028 — and the $130B Q4 guide points the other way.</div><p>On the earnings call, interim CEO Colette Kress raised the FY2028 growth outlook to about 75% (from 70%); said financing guarantees only switch on once a data center is built (“no building, no guarantee”); Hopper shipments to China have stopped and Q4 guidance assumes zero China Data Center revenue. Shares closed Nov 17 at $155.46 (−0.44%), rose about 3.6% after hours to $161.04, then closed Nov 18 at $150.96 (−2.89%) — the after-hours gain fully reversed. The price move does not change the tank-call test, which is about Data Center revenue, not price.</p>'+
+'<h2>Who’s in Charge</h2><p>Colette Kress, interim CEO since Nov 12, 2026, keeping her CFO role (CFO since Sep 2013). Harvey C. Jones, Nvidia’s first-ever board chair (director since 1993). Jensen Huang resigned as CEO on Nov 12, 2026, effective immediately; the board accepted his resignation and does not intend to reinstate him. The board hired Heidrick &amp; Struggles to run the CEO search and will not rush it — Jones: “We will not find a Jensen clone.” At Kress’s first all-hands on Nov 18, she announced pay raises and additional equity awards in December, months earlier than scheduled.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 1, Nov 17). In Brenden’s words: steer off the stock price and ask “Is the spending paying for itself?” The driver is chip revenue from data centers. Track Data Center revenue over two quarters. As of the latest earnings, the company is definitely not tanking.</p>' };
+
+P.microsoft = { title:"Microsoft", cat:"Companies", tag:"Microsoft Corporation · MSFT · Pig · EBITA rank #2",
+infobox: ib("Microsoft Corporation (MSFT)", [["Tranche","Pig"],["EBITA rank","#2 of 10 ($167.39B)"],["Fiscal year","Ends Jun 30"],["CEO","Satya Nadella"],["Key project","Maia chip and Copilot"],["Camera line","“The pair is the test — CapEx down AND Azure growth slowing.”"]]),
+body:'<p><b>Microsoft</b> sells software that makes business easier — Windows, Office, and above all Azure, its cloud computing business. Its AI bet is Copilot (an AI assistant built into its software) running on Azure, increasingly on Microsoft’s own Maia chips. The question for Microsoft is not R&amp;D dollars — R&amp;D is AI spend — it is AI adoption: whether customers actually use Copilot, GitHub Copilot, and Azure AI.</p>'+
+'<h2>1. At a Glance</h2><p>CapEx grew 80% in FY2026 to $115.9B (vs $64.6B). Calendar 2026 reported CapEx of ~$175B vs ~$190B is a reclassification only (accounting, not a real cut — see Notes). Commercial RPO (remaining performance obligation — money customers have committed to pay) $678B, up 84% year-on-year (+25% excluding '+wl('openai','OpenAI')+'). Financing verdict: self-funded, free cash flow squeezed but positive. Signal: <b>GROWING</b> (the reported line is misleading).</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $23.89 · 2023 $28.11 · 2024 $44.48 · 2025 $64.55 · 2026 $115.95. FY2026 is 4.9× FY2022. R&amp;D was 10.7% of revenue in 2026, drifting down from 12.8% in 2023 as revenue outgrew research spending. Q1 FY2027 (Sep 2026 quarter): total CapEx $45.2B as reported on the call (including finance leases) vs $34.9B a year ago; on a cash basis the 10-Q shows $39.367B cash CapEx, $58.0B operating cash flow, $18.633B free cash flow.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin: 2022 68.4% · 2023 68.9% · 2024 69.8% · 2025 68.8% · 2026 67.9%. Steady in the high 60s. FY2026: gross profit $225.47B on revenue of $331.84B.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow, cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["FY2024","$245.12","$74.07","n/r","$78.78"],["FY2025","$281.72","$71.60","n/r","$89.32"],["FY2026","$331.84","$66.99","$76.84","$106.89"]])+'<p>Net debt: $30.05B. Cash &amp; investments for 2022–2025 n/r in this pass — the row is offered, the value is not invented.</p>'+
+'<h2>5. Operations</h2><ul><li><b>Fairwater 1</b> (Mount Pleasant, Wisconsin) — ALREADY BUILT, first facility complete and fully operational Jun 23, 2026; size disputed (~117 MW permit-based vs over 350 MW in other reports); $3.3B first facility.</li><li><b>Fairwater Atlanta</b> (Atlanta, Georgia, with QTS) — ALREADY BUILT, first AI superfactory Nov 2025; over 300 MW IT across two buildings, campus over 700 MW by end-2026 in one analysis (tracker/analyst-derived, not a single Microsoft filing figure).</li><li><b>Fairwater 2</b>, Wisconsin — BEING BUILT, expected online 2028, about 800 employees projected; MW n/r; 15 additional buildings approved Jan 2026 (approval is not construction started).</li></ul>'+
+'<h2>6. Outlook</h2><p>Calendar 2026 CapEx about $175B; Q1 FY2027 CapEx over $50B; FY2027 CapEx to grow year-on-year (no company dollar figure); free cash flow to stay positive in FY2027. Backlog: commercial RPO $678B at FY2026 Q4, up 84% year-on-year (+25% excluding OpenAI), about 30% due in the next 12 months, weighted average duration 2.3 years — backlog, not cash in hand. Cuts/pauses: none. The calendar-2026 reported CapEx change from $190B to ~$175B is <b>accounting only</b> (useful life extended from 15 to 25 years; more leases shift from finance to operating, and operating leases are excluded from Microsoft’s CapEx measure). The CFO said that outside this impact, calendar-year 2026 CapEx expectations are unchanged.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Do not splice FY2027 directly onto FY2026 without the lease-reclassification footnote — reported CapEx will fall even if cash spending is unchanged.</li><li>Debt definitions conflict across sources (about $40.3B to $106.89B depending on what is counted) — do not mix series.</li><li>Analyst FY2027 CapEx estimates range from $220.7B (BofA) to $255–260B — a $34–39B gap, and neither is company guidance.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>FY2026, ended Jun 2026 — Revenue $331.84B · Free cash flow $66.99B · Cash &amp; short-term investments $76.84B · CapEx $115.95B · R&amp;D $35.56B · Gross margin 67.9%.</p>'+
+'<h2>9. EBITA</h2><p>Rank #2 of 10. Trailing-twelve-months EBITA <b>$167.39B</b> (operating income $163.19B + amortization $4.20B). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 17.8% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $779.4B · Cash $20.3B · Short-term investments $44.2B · Receivables $62.1B · Inventory $1.8B · Property, plant and equipment $346.8B · Long-term investments $37.8B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $174.5B · FY2020 $301.3B · FY2026 $758.4B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2026 total assets up 22.5% on the year. Growth stepped up from about 9–13% (FY2021–23) to 24.3% / 20.9% / 22.5% (FY2024–26); property, plant and equipment up 52.7% in FY2026.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 607.1M vs 515.5M. 2. Vanguard Capital Mgmt 486.1M vs 614.0M. 3. State Street 320.7M vs 299.1M. 4. FMR (Fidelity) 203.8M vs 222.3M — Fidelity added 17.8M shares in Q3 2026 (+9.58%) while cutting '+wl('nvidia')+'. 5. Geode 192.4M vs 117.8M. Vanguard entity split note: the 2020–2025 figures are the old combined Vanguard; the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. Combined, Vanguard is the largest Microsoft holder (653.3M shares).</p>'+
+'<h2>Stakes It Holds</h2><p>Microsoft holds stakes in <b>11 partners</b>. The biggest: '+wl('openai','OpenAI')+' — about 24% as-converted at Sep 30, 2026, with $13.0B committed and $12.0B funded <span class="label proven">PROVEN</span>; '+wl('anthropic')+' — up to $5B agreed Nov 2025 plus $1B in the $26B placement <span class="label reported">REPORTED</span>; G42 — $1.5B minority stake, Apr 2024 <span class="label proven">PROVEN</span>; '+wl('mistral','Mistral AI')+' — €15M convertible Feb 2024 (under 1%) plus M12 Series B/C co-investment <span class="label reported">REPORTED</span>; '+wl('figure','Figure AI')+' Series B <span class="label reported">REPORTED</span>; subsea cables — 25% of MAREA <span class="label proven">PROVEN</span>, Amitié (% n/r, Meta majority), 16.6634% of New Cross Pacific <span class="label proven">PROVEN</span>, SEA-ME-WE 6 consortium member (% n/r), I-2SEA (% n/r). LSEG: about 4% bought Dec 2022 <span class="label proven">PROVEN purchase</span> — current holding n/r, on the '+wl('watchlist')+' until re-checked.</p>'+
+'<h2>The Test</h2><p>The signal is AI adoption (Copilot usage, Azure AI demand, GitHub Copilot), not R&amp;D dollars. Cortana, Microsoft’s retired AI assistant (retired 2023), is the cautionary tale — it is <b>not</b> still running alongside Copilot. Copilot is the bet that adoption sticks this time. Brenden’s reframed test (Nov 17–18, 2026): “will Copilot stay the flagship” is the wrong question — Microsoft sells software that makes business easier, AI tools are today’s product, built on Maia chips. The real test is when Microsoft’s exponential market-share gains start flattening. Losing competitiveness would appear in the public filings as <b>CapEx declining coinciding with Azure revenue growth declining</b> — the pair is the test. CapEx down alone could be Maia efficiency (doing more with less); growth is what decides which it is. CapEx is on the cash flow statement, Azure revenue on the income statement — <b>not</b> the balance sheet. Caveat: the signal is crucial while the AI market is still growing, weaker once the market saturates.</p><p>Maia tracking (priority 1): Maia 200 in production, Maia 300 deployments in 2027, planned as the primary inference system from 2027; Azure runs on '+wl('nvidia','Nvidia')+' and Maia, Nvidia still dominant for frontier training. Azure revenue in the September quarter was $33.2B (+48%), and annual Azure revenue has crossed $100B. Microsoft CapEx for calendar 2026 is about $170B, with over $50B expected in Q2 FY2027. The “Azure mess” under watch: complexity and sprawl, rented neocloud capacity under review, $364.6B of leases not yet commenced. Windows is the delivery vehicle: Windows OEM/devices revenue was $3,551M, down 22% in Q3 (10-Q) <span class="label proven">PROVEN</span> (end-of-support comparison, inventory, and weak PC demand — not memory costs). Maia is in-house only, not for sale.</p>'+
+'<h2>Who’s in Charge</h2><p>Satya Nadella, chairman and CEO. Scott Guthrie, executive vice president for Cloud + AI (in charge of Maia and Azure). Arun Ulag, Azure Core leader since Oct 12, 2026.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 4, Nov 17; retake drilled Nov 18). In Brenden’s words: losing competitiveness would appear in the public filings as CapEx declining coinciding with Azure revenue growth declining — the pair is the test. CapEx down alone could just be Maia doing more with less.</p>' };
+
+P.apple = { title:"Apple", cat:"Companies", tag:"Apple Inc. · AAPL · Monkey · EBITA rank #3",
+infobox: ib("Apple Inc. (AAPL)", [["Tranche","Monkey"],["EBITA rank","#3 of 10 ($162.96B)"],["Fiscal year","Ends late September"],["CEO","John Ternus (since Sep 1, 2026)"],["Key project","iPhone 20"],["Camera line","“Apple’s margins are getting squeezed by memory prices — the same shortage helping Micron.”"]]),
+body:'<p><b>Apple</b> makes the iPhone and the devices and services around it. In the AI buildout, Apple is the opt-out: it spends under $15B a year on CapEx while '+wl('alphabet')+' spends $195–205B. Apple buys memory rather than making it, so the memory shortage squeezes Apple while it lifts '+wl('micron')+' — the two are on opposite sides of the same shortage.</p>'+
+'<h2>1. At a Glance</h2><p>No CapEx growth reported; press estimates put FY2026 CapEx at $13–14B vs FY2025’s $12.7B (+2% to +10%, derived). Total CapEx under $15B vs Alphabet’s $195–205B — an opt-out, not a peak. No guidance. Financing verdict: self-funded, free cash flow squeezed but positive. Signal: <b>FLAT / OPT-OUT</b>.</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $10.708 · 2023 $10.959 · 2024 $9.447 · 2025 $12.715 · 2026 n/r (FY2026 unreported at the Oct 28, 2026 cutoff; 9 months to Jun 27, 2026: CapEx $6.799B, R&amp;D $34.035B — do <b>not</b> compare to full prior years). R&amp;D was 8.3% of revenue in 2025, creeping up from 6.7% in 2022. No AI CapEx inflection — about 1.0× baseline.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin: 2022 43.3% · 2023 44.1% · 2024 46.2% · 2025 46.9% · 2026 not reported at cutoff (the Sec 8 filing update gives 48.8%). FY2025: gross profit $195.20B on revenue of $416.16B. Services gross margin drove the rise (75.4% in FY2025 vs 71.7% in FY2022); products stayed around 36–37%.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow, cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["FY2023","$383.3","$99.6","$61.6","$112.11"],["FY2024","$391.0","$108.8","$65.1","$107.53"],["FY2025","$416.2","$98.8","$54.7","$99.89"]])+'<p>Net debt: $45.19B. Operating cash flow n/r in this table.</p>'+
+'<h2>5. Operations</h2><ul><li><b>Apple Maiden expansion</b> (Maiden, North Carolina) — BEING BUILT, construction under way Oct 2026; MW not disclosed; $175M, 237,600 sq ft on existing land — an expansion, not a new gigawatt AI campus.</li><li><b>Apple Houston server factory</b> (Houston, Texas) — BEING BUILT, 250,000 sq ft <b>factory</b>, not a data center; mass production in 2026 for Apple Intelligence / Private Cloud Compute servers.</li><li>Apple is the largest customer at '+wl('tsmc','TSMC')+'’s Fab 21 in Arizona. Data-center expansions announced in NC, IA, OR, AZ, NV — but no gigawatt AI campus with disclosed MW found.</li></ul>'+
+'<h2>6. Outlook</h2><p>No AI/data-center spending split disclosed. Total CapEx FY2025 $12.7B; FY2026 press estimate $13–14B (under $15B). No CapEx guidance disclosed — a gap. No comparable backlog/RPO figure found — a gap. Cuts/pauses: none found.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>FY2026 (ended late Sep 2026) had not yet been reported at the Oct 28, 2026 cutoff.</li><li>One aggregator mislabels millions as billions; its dollar columns were not used — margins check against the 10-K.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>FY2026, ended Sep 2026, 10-K Nov 3 — Revenue $478.83B · Free cash flow $136.06B · Cash &amp; short-term investments $136.94B · CapEx $9.04B · R&amp;D $45.77B · Gross margin 48.8%.</p>'+
+'<h2>9. EBITA</h2><p>Rank #3 of 10. Trailing-twelve-months EBITA <b>$162.96B</b> (operating income $158.06B + amortization $4.90B). Period: Sep 27, 2025 to Sep 26, 2026. EBITA share: 17.4% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 26, 2026)</h2><p>Total assets $404.5B · Cash $36.3B · Short-term investments $20.4B · Receivables $83.7B · Inventory $14.5B · Property, plant and equipment $52.1B · Long-term investments $80.2B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $290.3B · FY2020 $323.9B · FY2026 $404.5B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2026 total assets up 12.6% on the year. Near-flat for years (0.5% / 0.0% / 3.5% / −1.6% in FY2022–25); the FY2026 jump was driven by inventory (+154.3%) and receivables (+14.7%).</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 1,157.1M vs 1,056.5M. 2. Vanguard Capital Mgmt 955.2M vs 1,255.2M. 3. State Street 622.5M vs 638.2M. 4. Geode 375.2M vs 248.0M. 5. FMR (Fidelity) 370.0M vs 358.6M. Vanguard entity split note: the 2020–2025 figures are the old combined Vanguard; the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. '+wl('berkshire','Berkshire Hathaway')+' also holds Apple: 227,917,808 shares, $66.0B, its #1 holding <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span> — see '+wl('berkshire','Berkshire Hathaway')+'.</p>'+
+'<h2>Stakes It Holds</h2><p><b>None.</b> 0 JVs, 0 equity securities <span class="label proven">PROVEN · FY2026 10-K</span>. Apple is the only one of the ten with no stakes at all. The Gui’an iCloud data center (China, jointly built with GCBD) is on the '+wl('watchlist')+' — Apple put in about $1B <span class="label reported">REPORTED</span>, but there is no joint-venture entity and ownership % is n/r, so it is not an edge.</p>'+
+'<h2>The Test</h2><p>Apple’s December-quarter margins are guided at <b>45–46%</b>, squeezed by memory costs — the same shortage lifting '+wl('micron')+' raises the cost of the memory in every iPhone. Costs squeeze margins, not the top line (top line means revenue). 45–46% is still healthy — the story is pressure, not collapse. December is Apple’s biggest quarter, so even a point of margin is real money. Apple is on the buying side of '+wl('memory','The Memory Shortage')+'.</p>'+
+'<h2>Who’s in Charge</h2><p>John Ternus, chief executive since Sep 1, 2026.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 7, Nov 18). In Brenden’s words: memory costs squeeze December-quarter margins (guided 45–46%) in the holiday buying season. Micron and Apple are on opposite sides of the shortage.</p>' };
+</script>
+<script>
+P.alphabet = { title:"Alphabet", cat:"Companies", tag:"Alphabet Inc. · GOOGL · Monkey · EBITA rank #4",
+infobox: ib("Alphabet Inc. (GOOGL)", [["Tranche","Monkey"],["EBITA rank","#4 of 10 ($157.90B)"],["Fiscal year","Ends Dec 31"],["CEO","Sundar Pichai"],["Key project","Tensor chip and frontline consumer AI models"],["Camera line","“Cloud is where the growth test lives, but Search is still the cash cow funding the buildout.”"]]),
+body:'<p><b>Alphabet</b> is Google’s parent company: Search, YouTube, Google Cloud, and the Tensor/TPU chips that run its AI. It is a growth company — valued on future revenue growth, not current cash flow alone — so its enormous data-center spending is growth investment. The sell test is whether that growth arrives, in Cloud revenue and backlog turning into cash, or slows.</p>'+
+'<h2>1. At a Glance</h2><p>CapEx grew 103.5% in the first half of 2026 ($80.6B vs $39.6B, derived). Guidance: the 2026 guide was raised, and 2027 spending rises significantly (no dollar figure). Cloud backlog $514B, up 385% year-on-year. Signal: <b>GROWING</b>. (Alphabet’s September-quarter cash-test figures are not published in this wiki.)</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $31.485 · 2023 $32.251 · 2024 $52.535 · 2025 $91.447 · 2026 partial-year figure withheld. R&amp;D was 15.2% of revenue in 2025, roughly flat in the 14–15% range from 2022–2025. Quarterly CapEx 2025: Q1 $17.197 / Q2 $22.446 / Q3 $23.953 / Q4 $27.851; 2026 Q1 $35.674 / Q2 $44.924. First half 2026 actual $80.6B vs first half 2025 $39.6B.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin: 2022 55.4% · 2023 56.6% · 2024 58.2% · 2025 59.7% · 2026 not reported. Latest year (2025): gross profit $240.3B on revenue of $402.8B.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow, cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["FY2023","$307.39","$69.50","$110.92","$14.62"],["FY2024","$350.02","$72.76","$95.66","$15.86"],["FY2025","$402.84","$73.27","$126.84","$51.04"]])+'<p>Net cash: $75.80B. Cash &amp; investments here means cash plus marketable securities (the old cash-only series was far lower — do not mix).</p>'+
+'<h2>5. Operations</h2><p>Alphabet is building data centers at many sites (MW figures are tracker-reported unless stated):</p><ul><li><b>Fort Wayne, Indiana</b> (Project Zodiac) — partially operating, construction continues, 400 MW, $2B campus.</li><li><b>Goodnight 1, Texas</b> (with Crusoe) — operating, Goodnight 2 under construction, 265.5 MW operational.</li><li><b>LaGrange, Georgia</b> — being built to 2029, first building ~50 MW, site eventually 400 MW, $1B new building, first building live late 2026/early 2027.</li><li><b>Michigan City, Indiana</b> (Project Maize) — being built, 200 MW, $832M, Phase I completed end 2026 (one tracker puts first building in service 2028–30 — conflict).</li><li><b>Kansas City, Missouri</b> (Project Ranger) — being built, MW not disclosed, 4 buildings, $1B, Building 1 operational Apr 2026.</li><li><b>Dorchester County, South Carolina</b> — being built, 150 MW, $2B (part of $9B in South Carolina through 2027).</li><li><b>Van Buren Township, Michigan</b> (Project Cannoli) — site plan approved Oct 2026, ~1 GW, ~$2B, service Dec 2027.</li><li><b>Cheyenne, Wyoming</b> (Tembo, ex-Project Jade) — vertical construction 2027, full build 2031, 2.7 GW, ~$17B reported (not primary-confirmed).</li><li><b>Pine Island, Minnesota</b> — proposal filed Oct 2026, approval not confirmed, 780 MW proposed.</li><li><b>New Florence, Missouri</b> (Project Spade) — construction expected 2026, 1.2 GW target, part of $15B Missouri investment.</li><li><b>Hermantown, Minnesota</b> — proposed Oct 2026, MW/$ not disclosed.</li><li>Legacy campuses Council Bluffs, Iowa (350 MW) and Lenoir, North Carolina (150 MW) are long-running, not proven new AI capacity.</li></ul>'+
+'<h2>6. Outlook</h2><p>2026 CapEx guide <b>$195–205B</b> (midpoint $200B); spending to rise significantly again in 2027 (no dollar figure). Prior ranges conflicted ($180–190B in one account, $175–185B in another — flagged). Backlog: Google Cloud backlog $514B; total-company RPO $519.5B at Q2 2026 (ended Jun 30, 2026); the $514B is up 385% on Q2 2025’s $106B; just over 50% falls due in the next 24 months. Cuts/pauses: none — guide raised.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Debt definition conflict: one source shows FY2025 long-term debt of $59.29B, not $46.55B — do not merge series without checking leases and current portion.</li><li>Q3 2026 figures in the sheet are from secondary reporting of the earnings release, not a direct filing read — and are on hold here.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $402.84B · Free cash flow $73.27B · Cash &amp; short-term investments $126.84B · CapEx $91.45B · R&amp;D $61.09B · Gross margin 59.7%.</p>'+
+'<h2>9. EBITA</h2><p>Rank #4 of 10. Trailing-twelve-months EBITA <b>$157.90B</b> (operating income $156.98B + amortization $0.92B — filed floor; Q4 2025 amortization n/r). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 16.8% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $1,003.3B · Cash $56.3B · Short-term investments $208.8B · Receivables $72.8B · Inventory $13.3B · Property, plant and equipment $372.8B · Long-term investments $135.2B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $147.5B · FY2020 $319.6B · FY2025 $595.3B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 32.2% on the year. Growth jumped from 11.9% (FY2024) to 32.2%, with property, plant and equipment up 44.2% and long-term investments up 80.8% in FY2025.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders of Class A shares, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 459.0M vs 406.6M. 2. Vanguard Capital Mgmt 384.8M vs 460.0M. 3. FMR (Fidelity) 247.7M vs 254.5M. 4. State Street 242.3M vs 227.0M. 5. Geode 151.9M vs 97.2M. Vanguard entity split note: the 2020–2025 figures are the old combined Vanguard; the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. Combined, Vanguard is the largest Alphabet holder (481.8M Class A shares). '+wl('berkshire','Berkshire Hathaway')+' also holds Alphabet: 78,791,167 Class A + 27,188,433 Class C = 106.0M shares, ~$37.8B, including a $10B private placement in Jun 2026 <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span> — see '+wl('berkshire','Berkshire Hathaway')+'.</p>'+
+'<h2>Stakes It Holds</h2><p>Alphabet holds stakes in <b>12 partners</b>. The biggest: '+wl('anthropic')+' — about 14% existing stake <span class="label proven">PROVEN</span> plus $10B in the $26B placement (<span class="label reported">REPORTED</span> amount; participation <span class="label proven">PROVEN</span>); the Series H $10B is UNRECONCILED — do not sum. '+wl('ast','AST SpaceMobile')+' 8,943,486 shares, $526.4M (Q3 13F) <span class="label proven">PROVEN</span>; Qualcomm 2,976,982 shares, $547.9M (Q3 13F) <span class="label proven">PROVEN</span>; Arm 1,960,784 ADSs, $568.0M (Q3 13F) <span class="label proven">PROVEN</span> — Alphabet is the only one of the ten still holding Arm; PayPay 3,125,000 ADS, $49.1M (Q3 13F) <span class="label proven">PROVEN</span> (PayPay is '+wl('softbank','SoftBank')+'-group); '+wl('marvell')+' warrant for up to 58,970,907 shares at $206.58, expiring Aug 18, 2033, paid nothing for the warrant <span class="label proven">PROVEN</span>; '+wl('verily')+' minority investor after the Mar 2026 spin-out (% n/r); Crux AI data-center JV with Blackstone — Alphabet up to $10B backstops, Blackstone up to $5B, $16.8B in Alphabet backlog (agreement <span class="label proven">PROVEN</span>; Alphabet equity % n/r); 49.99% of combined GFiber + Astound, expecting $1.5B cash + $2.0B note (terms <span class="label proven">PROVEN</span>; agreed Mar 2026, close expected late 2026); Intrinsic–Foxconn robotics JV, announced Oct 2025 <span class="label reported">REPORTED</span>, terms n/r; TeraWulf penny warrants, 41,011,803 shares exercisable (7.6% of class), paid nothing <span class="label reported">REPORTED</span>; 16 part-owned subsea cables (counts <span class="label reported">REPORTED</span>; % n/r per cable). Plus 24 further Q3 13F positions, none an M&amp;P name, none shared with another of the ten. The $20B unnamed derivative is on the '+wl('watchlist')+'.</p>'+
+'<h2>The Test</h2><p>Alphabet is a growth company — the CapEx surge is growth investment, debt-funded at the margin while free cash flow is negative. The sell test is whether the growth arrives (Cloud revenue, backlog converting to cash) or slows. Track data-center buildouts site by site alongside the balance sheet. ChatGPT/'+wl('openai','OpenAI')+' is the biggest threat — AI becoming the new “just google it.” Search is the cash cow funding the buildout; if ChatGPT bites, it bites there first. But Brenden’s ruling (Nov 17, 2026): falling Search revenue is <b>not</b> a sell theory. Watch it, don’t trade on it. The sell test stays Cloud revenue. See '+wl('brendentest','The Brenden Test')+'.</p>'+
+'<h2>Who’s in Charge</h2><p>Sundar Pichai, chief executive of Alphabet and Google.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 5, Nov 17). In Brenden’s words: the biggest threat right now is ChatGPT. The number to track is Cloud revenue. Search is the cash cow funding the buildout.</p>' };
+
+P.micron = { title:"Micron", cat:"Companies", tag:"Micron Technology · MU · Monkey · EBITA rank #5",
+infobox: ib("Micron Technology (MU)", [["Tranche","Monkey"],["EBITA rank","#5 of 10 ($99.34B)"],["Fiscal year","Ends late Aug / early Sep"],["CEO","Sanjay Mehrotra"],["Key project","HBM4 memory + critical minerals NY deal"],["Camera line","“Inventory up because they’re making more, not because nobody’s buying.”"]]),
+body:'<p><b>Micron</b> makes memory — the DRAM and NAND chips that store data, and HBM (high-bandwidth memory), the stacked fast memory that AI chips need. The memory shortage has made Micron’s year extraordinary: revenue more than tripled in FY2026. Micron sells memory, so the shortage lifts Micron — the opposite side from '+wl('apple')+', which buys it.</p>'+
+'<h2>1. At a Glance</h2><p>CapEx guide raised by more than 25% vs the prior guide; FY2027 brings a meaningful step-up (no dollar figure). HBM 2026 production is 100% allocated/sold out. Financing verdict: net cash — AI CapEx not yet debt-funded (2026). Signal: <b>GROWING</b>.</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $12.067 · 2023 $7.676 · 2024 $8.386 · 2025 $15.857 · 2026 $30.712. FY2026 is 2.5× FY2022; the inflection is FY2025–FY2026. Net CapEx FY2026 was lower at $27.37B (net of incentives and proceeds). R&amp;D was 4.2% of revenue in 2026, collapsed from 10.2% in 2025 as revenue surged — R&amp;D $5.65B against revenue of $133.19B. Last four quarters (FY2026): Q1 $5.389 / Q2 $6.387 / Q3 $7.826 / Q4 $11.110.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin: 2022 45.2% · 2023 −9.1% · 2024 22.4% · 2025 39.8% · 2026 80.7%. FY2026: gross profit $107.50B on revenue of $133.19B. The sheet flags FY2026 for a 10-K check before on-camera use. The swing from −9.1% (FY2023, including about a $1.43B inventory write-down in one quarter) to 80.7% (FY2026) came from DRAM prices up about 180% and NAND up about 200% year-on-year plus the HBM mix; about 60% of FY2026 revenue came from data centers.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow, cash and short-term investments, and total debt ($B). Note: Micron’s total debt here is the old sheet series for this company (it differs from the uniform series); the long-term/current/lease split is n/r.</p>'+finTable([["FY2024","$25.11","$0.12","$9.15","$14.08"],["FY2025","$37.38","$1.67","$11.94","$14.58"],["FY2026","$133.19","$58.96","$73.45","$5.18"]])+'<p>Net cash: $68.27B. Operating cash flow n/r in this table. In FY2023 Micron issued debt while burning cash (long-term debt $6.8B → $13.1B, free cash flow −$6.1B); it swung to net cash of $68.3B in FY2026, helped by $12.75B of customer contract deposits — prepayments, not debt.</p>'+
+'<h2>5. Operations</h2><ul><li><b>Micron Boise ID1</b> (Boise, Idaho) — BEING BUILT; part of an about $50B two-fab Boise plan; construction began Oct 2023; first wafer output mid-calendar 2027, pulled in from H2 2027 (PROVISIONAL).</li><li><b>Micron Boise ID2</b> — BEING BUILT; construction began 2026; initial wafers late calendar 2028.</li><li><b>Micron Clay, Fab 1</b> (Clay, New York) — BEING BUILT; up to $100B campus, 4 fabs, about 2.4M sq ft of cleanroom at full build; broke ground Jan 16, 2026, first concrete Jul 9, 2026 ahead of plan; production around 2030.</li><li><b>Micron Clay, Fabs 2–4</b> — GOING TO BE BUILT; Fab 2 construction H2 2028, Fab 3 2033, Fab 4 2039; full campus operational by about 2045 — a long-dated pipeline, not near-term AI capacity.</li></ul><p><b>Nearshoring in three buckets</b> (never lead with $118B alone): 1) the $3B supplier plan only — wafers and minerals — GlobalWafers $500M (Sherman, Texas, 10-year deal, one-sixth of the $3B), Indium Corp in Rome, New York (undisclosed), about $2.5B unnamed, possibly unspent headroom (“up to $3B”); 2) the $100B Syracuse factory over 20 years, <b>not</b> in the $3B; 3) the $15B Boise expansion through 2030, <b>not</b> in the $3B. Separate, <b>not</b> in $118B: Idaho community investments over $67M plus Micron Ventures’ $250M AI fund ($317M).</p>'+
+'<h2>6. Outlook</h2><p>FY2026 CapEx guide over $25B (raised from about $20B); FY2027 meaningful step-up, no dollar figure. HBM 2026 production fully allocated/sold out under price-and-volume agreements; HBM4 ramp in H2 2026, HBM4E in calendar 2027; no AI/HBM dollar split disclosed. Backlog/RPO: no comparable figure found — a gap. Cuts/pauses: none — guide raised about $20B to over $25B (over +$5B), a real increase.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li><b>FLAG FY2026 FOR 10-K CHECK:</b> revenue $133.19B, up 256% from $37.38B; definition conflict — adjusted free cash flow $62.31B vs $58.96B GAAP free cash flow; use one definition consistently.</li><li>Micron’s Q1 FY2027 guide: revenue $61.5B ±$1.5B, non-GAAP EPS $38.15 ±$1.00 (Form 8-K, Sep 30, 2026). Earnings date mid-December, UNCONFIRMED — most trackers say Wed Dec 16, some Dec 23, one Dec 15.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>FY2026, ended Sep 2026 — Revenue $133.19B · Free cash flow $58.96B · Cash &amp; short-term investments $73.45B · CapEx $30.71B · R&amp;D $5.65B · Gross margin 80.7% (needs FY2026 10-K check).</p>'+
+'<h2>9. EBITA</h2><p>Rank #5 of 10. Trailing-twelve-months EBITA <b>$99.34B</b>, on an operating-income basis (amortization not separately disclosed; intangibles about $0.47B, immaterial). Period: Sep 4, 2025 to Sep 3, 2026. EBITA share: 10.6% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 3, 2026)</h2><p>Total assets $195.9B · Cash $38.4B · Short-term investments $5.1B · Receivables $36.2B · Inventory $10.4B · Property, plant and equipment $63.3B · Long-term investments $30.0B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $24.1B · FY2020 $53.7B · FY2026 $195.9B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2026 total assets up 136.6% on the year. Steady 8–19% growth from FY2015–25, then +136.6% in FY2026 (cash +297.9%, receivables +290.7%, long-term investments +1,742.8%).</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 104.8M vs n/r. 2. Vanguard Capital Mgmt 73.9M vs 88.0M. 3. State Street 51.1M vs 46.2M. 4. Invesco 36.4M vs n/r. 5. Capital World 18.3M vs 1.5M — Capital World cut its Micron stake 38.02% in Q3 2026 (from 29.5M to 18.3M shares). Vanguard entity split note: the 2020–2025 figures are the old combined Vanguard; the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling.</p>'+
+'<h2>Stakes It Holds</h2><p>One edge: '+wl('anthropic')+' — $1B in the $26B placement <span class="label reported">REPORTED</span> plus a Series H strategic investment, amount n/r (existence <span class="label proven">PROVEN</span>). 0 JVs <span class="label proven">PROVEN</span>. The GlobalWafers convertibles (up to $500M) are pending, not live — see the '+wl('watchlist')+'.</p>'+
+'<h2>The Test</h2><p>'+wl('memory','The Memory Shortage')+' test: Micron’s inventory assets going up and staying steady for two quarters — inventory up because Micron is making more, not because nobody is buying. Assets going up alone is <b>not</b> the trigger — a fab under construction doesn’t put memory on the shelf. The trigger needs supply actually arriving. <b>The trigger is still OPEN.</b></p>'+
+'<h2>Who’s in Charge</h2><p>Sanjay Mehrotra, chief executive.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 2, Nov 17). In Brenden’s words: we need to see inventory assets go up and stay steady for two quarters. Pocket line: inventory up because they’re making more, not because nobody’s buying.</p>' };
+
+P.tsmc = { title:"TSMC", cat:"Companies", tag:"Taiwan Semiconductor Manufacturing Company · TSM · Monkey · EBITA rank #6",
+infobox: ib("TSMC (TSM)", [["Full name","Taiwan Semiconductor Manufacturing Company"],["Tranche","Monkey"],["EBITA rank","#6 of 10 ($90.73B)"],["Fiscal year","Ends Dec 31"],["CEO","C.C. Wei"],["Key project","Fab buildouts (Phoenix, Arizona)"],["Camera line","“TSMC doesn’t rent its fabs. If they’re in, they run it.”"]]),
+body:'<p><b>TSMC</b> is the world’s biggest contract chipmaker — a “foundry,” meaning it makes chips designed by other companies ('+wl('apple','Apple')+', '+wl('nvidia','Nvidia')+', and others) rather than selling its own. It reports in Taiwan dollars (NT$) under international accounting rules; the figures here are in US dollars throughout, converted at the revenue-implied exchange rate. TSMC is the supplier side of the AI buildout: it builds the factories (fabs) that make the chips, and its spending is the biggest fab-building program in the index.</p>'+
+'<h2>1. At a Glance</h2><p>2026 CapEx (spending on buildings and equipment) is guided at $60–64B, with 70–80% of it going to advanced processes (the newest chip-making technology, 2-nanometre and 3-nanometre). The guide was raised from $52–56B — a real increase of about $8B at the midpoint. Guide midpoint growth vs 2025 (about $41B): +51%. Financing verdict: self-funded, free cash flow squeezed but positive. Signal: <b>GROWING</b>.</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $36.29 · 2023 $30.45 · 2024 $29.76 · 2025 $40.90 · 2026 guide $60–64B (raised from $52–56B). 2025 was 1.15× 2022; the 2026 guide is 1.7–1.8× 2022. R&amp;D by year ($B): 2022 $5.31 · 2023 $5.96 · 2024 $6.23 · 2025 $7.86. R&amp;D as a share of revenue peaked in 2023 (8.4%) and drifted down to 6.4% in 2025 as revenue grew faster than research spending. 2026 quarterly CapEx: Q1 $10.981B, Q2 $15.588B, Q3 $13.892B — Jan–Sep 2026 CapEx $40.461B, R&amp;D $7.236B. Warning: 2026 is partial-year only — do <b>not</b> compare it to full prior years.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of making the product): 2022 59.6% · 2023 54.4% · 2024 56.1% · 2025 59.9% · 2026 not reported. Gross profit / revenue ($B): 2022 $45.19 / $75.88 · 2023 $37.67 / $69.30 · 2024 $50.55 / $90.08 · 2025 $73.31 / $122.42. The margin is identical whether measured in Taiwan dollars or US dollars.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["2022","$75.88","$17.46","$53.29","$29.77"],["2023","$69.30","$9.19","$54.82","$30.66"],["2024","$90.08","$27.08","$77.50","$32.68"],["2025","$122.42","$31.90","$100.60","$34.07"]])+'<p>Net cash by year: 2022 $23.52B · 2023 $24.16B · 2024 $44.82B · 2025 $66.53B. TSMC has been in net cash throughout — it holds far more cash than debt. Operating cash flow n/r in this table.</p>'+
+'<h2>5. Operations</h2><p>These are fabs (chip factories), <b>not</b> data centers.</p><ul><li><b>Fab 1, Phoenix, Arizona</b> — ALREADY BUILT. Part of a $65B+ initial three-fab phase (later tracker reports put the full Arizona program at $165B–$265B). N4 process in volume production since Q4 2024. More than 100 million chips for '+wl('apple','Apple')+' were produced in Arizona in 2026, per Apple. Power (MW) n/r.</li><li><b>Fab 2, Phoenix, Arizona</b> — BEING BUILT. N3 and more advanced processes. Structure complete in 2025, tool move-in under way Oct 2026, volume production Q3 2027. MW n/r.</li><li><b>Fab 3, Phoenix, Arizona</b> — BEING BUILT. N2 / A16 processes. Broke ground Apr 2025, volume production by end of the decade in company-linked reporting. MW n/r.</li><li><b>Fab 4 plus the first Arizona packaging fab, Phoenix</b> — GOING TO BE BUILT. Packaging (CoWoS / 3D-IC — stacking chips together) target 2029 reported; initial construction early 2026. MW n/r.</li></ul>'+
+'<h2>6. Outlook</h2><p>2026 CapEx guide $60–64B; the next three years will be significantly higher than the roughly $101B of the prior three years. One analyst model (Citi) has 2027 at $75B and 2028 at $80B. 70–80% of the 2026 guide goes to advanced processes (2nm/3nm) — at the $62B midpoint that is $43.4–49.6B of advanced-process spending (derived). No AI-only dollar split is disclosed. Backlog (RPO — money customers have committed to pay): no comparable figure found — a gap. Cuts or pauses: none. The guide was raised, not cut.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Q3 2026 revenue $46.72B, up 41.2% year-on-year in US dollars. Q3 CapEx $13.84B; $40.64B spent in the first nine months of 2026 vs $40.90B in all of 2025.</li><li>Net cash: cash and short-term investments of NT$3,597.44B at Jun 30, 2026 vs total debt of NT$1,064.95B including leases.</li><li>Gross margin troughed at 54.4% in 2023, recovered to 59.9% in 2025; quarterly margins were in the mid-60s% in 2026 (trailing twelve months about 64–66% through mid-2026).</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $122.42B · Free cash flow $31.90B · Cash &amp; short-term investments $100.60B · CapEx $40.90B · R&amp;D $7.86B · Gross margin 59.9%. Share price Nov 5, 2026 close: $353.10.</p>'+
+'<h2>9. EBITA</h2><p>Rank #6 of 10. Trailing-twelve-months EBITA <b>$90.73B</b> (operating income $90.73B, operating-income basis; amortization not separately stated). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 9.7% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $315.3B · Cash $113.6B · Short-term investments $12.4B · Receivables (money owed by customers) $15.2B · Inventory $13.4B · Property, plant and equipment $142.0B · Long-term investments $7.0B · Other $11.7B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $50.5B · FY2020 $98.3B · FY2025 $252.9B · Q3 2026 $315.3B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 23.9% on the year (vs FY2024 $204.1B). Total assets grew every year from 2015 to 2025, accelerating in 2020–2021 (+29.8%, +36.6%), then +20.3% / +11.8% / +13.0% / +23.9% in 2022–2025.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held (ADR counts — one ADR equals 5 ordinary shares), Q3 2026 vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. FMR (Fidelity) 65,370,233 ADRs vs n/r in 2020. 2. Capital World 33,796,063 vs 38,642,566. 3. Sanders Capital 24,455,974 vs 44,058,914. 4. '+wl('blackrock','BlackRock')+' 19,522,629 ADRs vs n/r in 2020 (the sheet’s Section 13 shows 20,112,852 at Jun 30, 2026 — the Q3 figure is the newer count). 5. Fisher 18,932,587 vs 27,640,000. TSMC is the one company where BlackRock is <b>not</b> the #1 holder — Fidelity is. Reporting dates are mixed (FMR, Capital World, Sanders, Fisher at Sep 30, 2026; BlackRock’s sheet figure at Jun 30, 2026). '+wl('softbank','SoftBank')+' also holds a small, shrinking stake: 565,000 ADRs, $269.8M, trimmed in Q2 2026 <span class="label reported">REPORTED</span>.</p>'+
+'<h2>Stakes It Holds</h2><p>TSMC holds stakes in <b>10 partners</b> (cash out — it spent to buy in): '+wl('anthropic')+' $500M in the placement <span class="label reported">REPORTED</span>; about 10% of IMS Nanofabrication <span class="label proven">PROVEN</span> — shared with '+wl('intel')+', which holds the majority; 72.65% of the JASM fab in Kumamoto, Japan <span class="label proven">PROVEN</span>; 40% of the AVSMC image-sensor joint venture (Sony holds 60% and is sole controlling shareholder; split <span class="label reported">REPORTED</span>, agreement and money <span class="label proven">PROVEN</span> — Sony about ¥465B vs TSMC about ¥282B); 70% of the ESMC fab in Dresden, Germany (Bosch, Infineon, and NXP 10% each) <span class="label proven">PROVEN</span>; 38.79% of SSMC in Singapore (NXP majority) <span class="label proven">PROVEN</span>; 41.01% of Xintec <span class="label proven">PROVEN</span>; 67.25% of VisEra <span class="label proven">PROVEN</span>; about 27.6% of VIS at Feb 28, 2026, with a sale of up to 152.0M shares announced May 15, 2026 reducing it to about 19% (announcement <span class="label proven">PROVEN</span>, post-sale figure <span class="label reported">REPORTED</span>); about 34.8% of GUC at Feb 28, 2026 <span class="label proven">PROVEN</span>. Pending, <b>not</b> a live edge: TSMC’s board approved a ceiling of up to $500M in '+wl('openai','OpenAI')+' preferred stock on Nov 10, 2026 (approval <span class="label proven">PROVEN</span>); whether the purchase happened is n/r.</p>'+
+'<h2>The Test</h2><p>TSMC has no company-specific sell test in this project — it is the supplier side of the story, and its signal is the fab buildout itself: guide raised, not cut, and three Arizona fabs in flight. Two facts to watch: TSMC’s board approved $40.9B in capital appropriations on Nov 10, 2026 (from the people file on C.C. Wei), and the company’s own rule is that it does not rent out its fabs — if TSMC is in a fab project, TSMC runs the fab, because the process is the company.</p>'+
+'<h2>Who’s in Charge</h2><p>C.C. Wei, chief executive officer. His condition on any outside fab project is that TSMC runs the fab — TSMC does not rent its process out.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 6, Nov 18). Camera line: “TSMC doesn’t rent its fabs. If they’re in, they run it.”</p>' };
+</script>
+<script>
+P.verizon = { title:"Verizon", cat:"Companies", tag:"Verizon Communications Inc. · VZ · Pig · EBITA rank #7",
+infobox: ib("Verizon Communications Inc. (VZ)", [["Tranche","Pig"],["EBITA rank","#7 of 10 ($32.45B)"],["Fiscal year","Ends Dec 31"],["CEO","Dan Schulman (since Oct 4, 2025)"],["Key project","ISAC — towers that sense"],["Camera line","“Verizon wants its towers to see, not just talk.”"]]),
+body:'<p><b>Verizon</b> is a phone carrier — it runs the mobile network and the fiber lines. It is not a data-center builder. Its part in the AI buildout is selling connectivity to the companies that are building data centers: fiber and edge capacity (network gear close to the data center) through its AI Connect program. Its spending is falling after the big C-band spectrum build, and it carries the heavy debt typical of a legacy telecom.</p>'+
+'<h2>1. At a Glance</h2><p>2026 CapEx guide $16.0–16.5B, midpoint down 4.4% vs 2025 ($17B). Signal: <b>MODERATING / PEAK-ish</b> — spending is past its peak and easing down. Financing verdict: high absolute debt, but funded by operating cash flow (legacy telecom leverage, not a 2026 AI spending spike).</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $23.09 · 2023 $18.77 · 2024 $17.09 · 2025 $17.01 · 2026 guide $16.0–16.5B. 2025 was 0.74× 2022 — declining after the C-band peak. Verizon discloses no separate R&amp;D line (that does not mean R&amp;D is $0 — it is not broken out). Q3 2026 CapEx was $3.72B. No last-four-quarters CapEx series exists in the sheet.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of providing the service): 2022 56.8% · 2023 59.1% · 2024 60.0% · 2025 58.9% · 2026 not reported. Gross profit / revenue ($B): 2022 $77.70 / $136.84 · 2023 $79.17 / $133.97 · 2024 $80.88 / $134.79 · 2025 $81.43 / $138.19. Caution: Verizon and '+wl('att','AT&T')+' do not report a single gross-profit line — these figures come from data aggregators (revenue minus cost-of-services-type costs). Do not compare telecom gross margin directly with chip gross margin. Do not use a competing ~79% series that conflicts with the ~57–60% range from the main aggregators.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["2022","$136.84","$10.40","$2.60","$150.64"],["2023","$133.97","$12.91","$2.06","$150.67"],["2024","$134.79","$18.92","$4.19","$144.01"],["2025","$138.19","$19.68","$19.05","$158.15"]])+'<p>Net debt by year: 2022 $148.04B · 2023 $148.61B · 2024 $139.82B · 2025 $139.10B. Operating cash flow n/r in this table.</p>'+
+'<h2>5. Operations</h2><p>Fiber and edge for hyperscaler data centers — a TIE-IN, <b>not</b> a data-center campus. AI Connect (Verizon’s program selling fiber and edge capacity to AI builders): about $4B signed in six months to Oct 2026, including a dark-fiber deal with AWS (Amazon’s cloud arm) worth more than $2B announced Oct 26, 2026, and a dark-fiber deal with Google worth more than $1B in Jul 2026. Corning fiber supply: more than 80 million fiber miles, 2027–2032. Power (MW) n/r. Verizon said significant AI Connect revenue had not begun yet, with impact expected to start in 2027.</p>'+
+'<h2>6. Outlook</h2><p>2026 CapEx guide $16.0–16.5B, reaffirmed, down $0.5–1.0B vs 2025’s $17B. No AI / data-center split is disclosed. Backlog (RPO — money customers have committed to pay): no comparable figure found — a gap. Cuts or pauses: no cut announced; the guide is down vs 2025, which is real moderation, not a pause.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Some summaries show long-term debt only — total debt is higher. Total debt (not long-term only) for 2022–2025 is as shown in Section 4.</li><li>One data source (TIKR) gives a slightly different free-cash-flow series ($18.7B in 2023, $19.8B in 2024, $20.1B in 2025) — a definition difference; do not average the two series.</li><li>Q3 2026: revenue $34.31B, operating margin 25.2%, consolidated net margin 15.5%, adjusted EBITDA margin 40.2%.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $138.19B · Free cash flow $19.68B · Cash &amp; short-term investments $19.05B · CapEx $17.01B · R&amp;D not separately disclosed · Gross margin 58.9%. Share price Nov 5, 2026 close: $46.12.</p>'+
+'<h2>9. EBITA</h2><p>Rank #7 of 10. Trailing-twelve-months EBITA <b>$32.45B</b> (operating income $29.08B + amortization $3.38B, total intangible amortization). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 3.5% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $415.5B · Cash $4.5B · Short-term investments n/a · Receivables (money owed by customers) $26.4B · Inventory $2.8B · Property, plant and equipment $125.1B · Long-term investments $0.8B · Other $29.1B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $244.2B · FY2020 $316.5B · FY2025 $404.3B · Q3 2026 $415.5B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 5.1% on the year. Slow, steady growth — +0.2% (2023), +1.2% (2024), +5.1% (2025); the 2021 jump of +15.8% is the outlier in the series.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 404.6M vs 298,750,519. 2. Vanguard Capital Mgmt 271.9M vs 325,949,036. 3. State Street 210.6M vs 161,029,777. 4. Charles Schwab Investment Management 136.0M vs 38,318,476. 5. Geode 108.1M vs 64,660,894. Note: Vanguard split into two separately filing advisers in Jan 2026; the 2020–2025 figures are the old combined Vanguard Group, the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. The sheet’s Section 13 shows slightly lower Q2-basis figures for BlackRock (398,216,158), Vanguard (259,000,000), and Schwab (127,770,000); the Q3 figures above are the newer counts.</p>'+
+'<h2>Stakes It Holds</h2><p>Verizon holds stakes in <b>3 partners</b> (cash out — it spent to buy in), plus 3 shared cables: '+wl('ast','AST SpaceMobile')+' — $35M of notes converted in Jan/Feb 2025, share count n/r <span class="label proven">PROVEN</span>; a 50:50 fiber joint venture with BT (entity: Jasper NewCo Ltd), with Verizon paying BT a $625M equalization payment — announced Jun 29, 2026, closing 2027 <span class="label proven">PROVEN, announced</span>; co-owner of the E2A subsea cable, in build, ownership % n/r (existence <span class="label proven">PROVEN</span>). The three legacy subsea cables co-owned with '+wl('att','AT&T')+' — Australia-Japan Cable (in service since 2001), Asia-Pacific Cable Network 2, and Trans-Pacific Express <span class="label reported">REPORTED</span>, % n/r. Verizon is also a founder of the three-carrier '+wl('satellite','Satellite Joint Venture')+' with '+wl('att','AT&T')+' and T-Mobile — see that page. Watchlist: a reported 10% stake in Yahoo Inc. was not verified in this sweep and needs a filings check.</p>'+
+'<h2>The Test</h2><p>Verizon has no company-specific sell test in this project. The story to watch is twofold: ISAC (Integrated Sensing and Communication) — turning cell towers into sensors that can see what’s around them like radar while still carrying signal — and whether the AI Connect fiber deals turn into real revenue from 2027, as Verizon expects.</p>'+
+'<h2>Who’s in Charge</h2><p>Dan Schulman, chief executive officer since Oct 4, 2025 (previously CEO of PayPal).</p>'+
+'<h2>On Camera</h2><p><b>TAUGHT, not answered back</b> (drill 9, Nov 18) — flagged “Run it back.” Brenden said “Idk” and was taught: ISAC means the towers also sense what’s around them like radar while carrying signal. Camera line: “Verizon wants its towers to see, not just talk.” He reacted with a heart emoji.</p>' };
+
+P.att = { title:"AT&T", cat:"Companies", tag:"AT&T Inc. · T · Pig · EBITA rank #8",
+infobox: ib("AT&T Inc. (T)", [["Tranche","Pig"],["EBITA rank","#8 of 10 ($23.81B)"],["Fiscal year","Ends Dec 31"],["CEO","John Stankey"],["Key project","Open RAN — mix-and-match tower parts"],["Headline","“Big 3 cellular is going interstellar”"],["Camera line","“AT&T wants to buy tower parts like Lego bricks instead of one locked box.”"]]),
+body:'<p><b>AT&amp;T</b> is a phone carrier — it runs the mobile network and the fiber lines. Like '+wl('verizon')+', it is not a data-center builder; its part in the AI buildout is fiber: supplying the fiber that connects data centers and reaching more than 60 million fiber locations by 2030. This page also carries the three-carrier satellite joint-venture story, under Brenden’s headline “big 3 cellular is going interstellar” — see the '+wl('satellite','Satellite Joint Venture')+' page.</p>'+
+'<h2>1. At a Glance</h2><p>2026 capital-investment plan $23–24B; 2027–2028 plan $22–23B per year (midpoint down 4.3% vs 2026). Fiber passed more than 39 million locations, target more than 60 million by 2030 — the build continues, the spending moderates. Signal: <b>MODERATING</b>. Financing verdict: high absolute debt, but funded by operating cash flow (legacy telecom leverage, not a 2026 AI spending spike). (The year-on-year CapEx growth figure vs the 2025 base is a gap — the 2025 base was not found.)</p>'+
+'<h2>2. Spending</h2><p>CapEx (cash spending on property, plant and equipment) by year ($B): 2022 $19.626 · 2023 $17.853 · 2024 $20.263 · 2025 $20.842 · 2026 plan $23–24B (capital investment, which is a broader measure than cash CapEx — do not mix the two). About 1.06× 2022 — flat. R&amp;D by year ($B): 2022 $1.24 · 2023 $0.95 · 2024 $0.96 · 2025 $0.84 — flat at about 1% of revenue or below, a negligible share. Q3 2026 CapEx $5.1B; capital investment $5.6B. No last-four-quarters CapEx series exists in the sheet.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of providing the service): 2022 57.9% · 2023 59.1% · 2024 59.8% · 2025 59.6% · 2026 not reported. Gross profit / revenue ($B): 2022 $69.89 / $120.74 · 2023 $72.31 / $122.43 · 2024 $73.12 / $122.34 · 2025 $74.83 / $125.65. Caution: AT&amp;T and Verizon do not report a single gross-profit line — these figures come from data aggregators. Do not compare telecom gross margin directly with chip gross margin.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["2022","$120.74","n/r","n/r","$135.89"],["2023","$122.43","$20.41 (derived)","n/r","$137.33"],["2024","$122.34","$18.47 (derived)","n/r","$123.53"],["2025","$125.65","$19.40","$18.20","$136.10"]])+'<p>Operating cash flow: 2023 $38.31B · 2024 $38.77B · 2025 $40.28B (2022 n/r). Net debt 2025: $117.90B. Debt-definition note: the uniform series (borrowings plus finance leases) gives 2025 total debt of $136.10B; an older sheet series gives $174.0B (net debt $155.8B). Definitions differ — both are preserved, do not average them. Operating lease liabilities 2025: $22.52B; total debt including operating leases 2025: $158.62B.</p>'+
+'<h2>5. Operations</h2><p>Fiber supply for AI/data growth — a TIE-IN, <b>not</b> a data-center campus. Corning multiyear fiber/cable deal worth more than $3B, Sep 29, 2026. AT&amp;T target: 60 million fiber locations by 2030. Power (MW) n/r. This is a supply contract, not a named AI data-center campus.</p>'+
+'<h2>6. Outlook</h2><p>2026 capital investment $23–24B; 2027–2028 $22–23B per year (midpoint down 4.3% vs 2026, derived). No AI / data-center split is disclosed. Backlog (RPO — money customers have committed to pay): no comparable figure found — a gap. Cuts or pauses: no cut announced; the guide is moderating in 2027–28, which is real moderation, not a pause.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>This is the thinnest retrieval in the sheet: free cash flow for 2022–2024 was not retrieved (the 2023–2024 figures are derived, not reported).</li><li>Conflict: one source gives FY2025 long-term debt as $127.1B in one summary and $134.7B in another — verify the long-term split from the 10-K before publishing.</li><li>FY2025 R&amp;D comes from the 2025 annual report’s management discussion text. One aggregator shows $0 R&amp;D as a line-item artifact — not used.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $125.65B · Free cash flow $19.40B · Cash &amp; short-term investments $18.20B · CapEx $20.84B · R&amp;D $0.84B · Gross margin 59.6%. Share price Nov 5, 2026 close: $21.82.</p>'+
+'<h2>9. EBITA</h2><p>Rank #8 of 10. Trailing-twelve-months EBITA <b>$23.81B</b> (operating income $23.58B + amortization $0.23B, acquisition-related only). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 2.5% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $445.9B · Cash $10.8B · Short-term investments n/a · Receivables (money owed by customers) $8.0B · Inventory $2.9B · Property, plant and equipment $132.2B · Long-term investments $1.2B · Other $49.3B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $402.7B · FY2020 $525.8B · FY2025 $420.2B · Q3 2026 $445.9B. FY2022 was $402.9B, down from $551.6B in FY2021 — the WarnerMedia-era step-down is visible in the series (AT&amp;T spun off its WarnerMedia entertainment business).</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 6.4% on the year. Volatile: −27.0% in 2022, +1.0% (2023), −3.0% (2024), +6.4% (2025). 2025 total assets are still below the 2020 level.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 548.7M vs 485,568,654. 2. Vanguard Capital Mgmt 448.3M vs 556,695,212. 3. State Street 326.6M vs 287,817,755. 4. Geode 177.9M vs 112,461,620. 5. Newport Trust 174.7M vs 196,731,147. Note: Vanguard split into two separately filing advisers in Jan 2026; the 2020–2025 figures are the old combined Vanguard Group, the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. The sheet’s Section 13 shows slightly higher Q2-basis figures for BlackRock (559,396,053) and Vanguard (453,562,905); the Q3 figures above are the newer counts.</p>'+
+'<h2>Stakes It Holds</h2><p>AT&amp;T holds stakes in <b>3 partners</b> (cash out — it spent to buy in), plus 3 shared cables: '+wl('ast','AST SpaceMobile')+' — 6,260,440 shares from a $35M note converted Feb 3, 2025 <span class="label proven">PROVEN</span>; Gigapower — a 50:50 fiber joint venture with BlackRock/GIP (Global Infrastructure Partners), closed May 2023 <span class="label proven">PROVEN</span>, which is to be absorbed by the pending combined fiber joint venture (announced Oct 6, 2026, closing H1 2027, AT&amp;T 50%, with GIP and CPP) — do not double-count the two; DriveNets — 16.6%, with $620M invested in 2025 <span class="label proven">PROVEN</span>. The three legacy subsea cables co-owned with '+wl('verizon')+' — Australia-Japan Cable, Asia-Pacific Cable Network 2, and Trans-Pacific Express <span class="label reported">REPORTED</span>, % n/r. AT&amp;T is also a founder of the three-carrier '+wl('satellite','Satellite Joint Venture')+' with '+wl('verizon')+' and T-Mobile — see that page. AT&amp;T’s own satellite partner is AST SpaceMobile.</p>'+
+'<h2>The Test</h2><p>AT&amp;T has no company-specific sell test in this project. The story to watch is the fiber buildout (more than 60 million locations by 2030) and the satellite joint venture — the freshest story in the index: three carriers, one venture, still unnamed, no permanent CEO, no launch date. Brenden’s headline for it: “Big 3 cellular is going interstellar.”</p>'+
+'<h2>Who’s in Charge</h2><p>John Stankey, chief executive officer.</p>'+
+'<h2>On Camera</h2><p><b>TAUGHT, not answered back</b> (drill 10, Nov 18) — flagged “Run it back.” Brenden said “Idk” and was taught: Open RAN means shared standards so AT&amp;T can mix and match tower parts from different suppliers instead of buying one locked box. Camera line: “AT&amp;T wants to buy tower parts like Lego bricks instead of one locked box.”</p>' };
+
+P.tesla = { title:"Tesla", cat:"Companies", tag:"Tesla, Inc. · TSLA · Pig · EBITA rank #9",
+infobox: ib("Tesla, Inc. (TSLA)", [["Tranche","Pig"],["EBITA rank","#9 of 10 ($3.47B)"],["Fiscal year","Ends Dec 31"],["CEO","Elon Musk"],["Key projects","Optimus robots, Static RAM (SRAM), Terafab chip plant"],["Camera line","“Once Optimus is shipping to consumers, the story is realized — sell.”"]]),
+body:'<p><b>Tesla</b> makes electric cars, and it is building two more bets: humanoid robots (Optimus) and its own chips. Terafab is Tesla’s planned chip plant in Grimes County, Texas ($16.8B first phase, announced Aug 6, 2026) — it would make Tesla’s own memory chips (Static RAM, or SRAM) so Tesla no longer depends on '+wl('nvidia')+' for the memory its robots and cars need. Tesla’s own supercomputers, Cortex 1 and Cortex 2 at Giga Texas, train its AI. Tesla is the one company in the index with a sell call attached: sell when Optimus ships to consumers. See '+wl('gates','The Tesla Three Gates')+'.</p>'+
+'<h2>1. At a Glance</h2><p>2026 CapEx guide about $20B vs 2025 actual $8.5B (+135%), but cut from a prior guide of more than $25B (−20%). Signal: <b>MIXED</b> — a 2026 cut paired with a multi-year rise. Financing verdict: net cash — the AI CapEx is not yet debt-funded.</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B): 2022 $7.158 · 2023 $8.898 · 2024 $11.342 · 2025 $8.527 · 2026 guide about $20B. R&amp;D by year ($B): 2022 $3.08 · 2023 $3.97 · 2024 $4.54 · 2025 $6.41. R&amp;D as a share of revenue rose every year — 3.8% (2022), 4.1% (2023), 4.6% (2024), 6.8% (2025) — nearly doubling as a share of revenue from 2022 to 2025. Jan–Sep 2026: CapEx $13.021B, R&amp;D $7.078B, combined $20.099B (Q1 2026 CapEx $2.49B, Q2 $5.79B). Warning: 2026 is partial-year only — do <b>not</b> compare it to full prior years.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of making the product): 2022 25.6% · 2023 18.2% · 2024 17.9% · 2025 18.0% · 2026 not reported. Gross profit / revenue ($B): 2022 $20.85 / $81.46 · 2023 $17.66 / $96.77 · 2024 $17.45 / $97.69 · 2025 $17.09 / $94.83. The step-down from 25.6% (2022) to about 18% from 2023 onward is explained by price cuts, not AI. The automotive-sales-only margin is lower still (14.5% in 2025); the figures above are the consolidated margin across the whole company.</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Note: total debt here means borrowings only (an older sheet series), not the borrowings-plus-leases definition used for most peers.</p>'+finTable([["2022","$81.46","$7.57","n/r","$2.05"],["2023","$96.77","$4.36","n/r","$4.66"],["2024","$97.69","$3.58","n/r","$7.88"],["2025","$94.83","$6.22","$44.10","$8.15"]])+'<p>Net cash (more cash than debt): $35.95B. Operating cash flow n/r in this table. Including leases, trailing-twelve-months total debt was $16.45B at Sep 2026, with cash and short-term investments of $45.45B.</p>'+
+'<h2>5. Operations</h2><ul><li><b>Cortex 1, Giga Texas</b>, Austin, Texas — ALREADY BUILT. More than 105 MW (megawatts — a measure of power) in production; originally about 50,000 '+wl('nvidia','Nvidia')+' H100 chips. Tesla’s own use, no external sale. In production since late 2024.</li><li><b>Cortex 2, Giga Texas</b>, Austin, Texas — ALREADY BUILT. More than 120 MW in production by Oct 2026; Tesla’s target is 400 MW total by year-end 2026 (which implies about 175 MW added in Q4 — a target, not delivered). Tesla’s own use, no external sale. Early ramp from Apr 2026.</li></ul>'+
+'<h2>6. Outlook</h2><p>2026 CapEx about $20B (Q3 10-Q), expanding over the next several years. Prior guides: more than $25B (raised in Q1), $20B in January, $8.5B actual in 2025. The 2026 buckets are named — AI training compute and data centres, custom silicon, Terafab, Optimus, robotaxi/Cybercab — but with <b>no</b> dollar figure per bucket. Terafab: tens of billions of dollars of equipment through early 2028, more than $100B long-term total claimed. Backlog (RPO — money customers have committed to pay): no comparable figure found — a gap. Cuts or pauses: the Q3 2026 10-Q cut the 2026 guide from more than $25B to about $20B (−20%) — a real guide cut for 2026, paired with expansion over the next several years (near-term cut, longer-term rise).</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Tesla signed $30B of unsecured credit facilities on Sep 29, 2026 but had no loans outstanding under them and said it did not plan to draw in 2026. A credit facility is not debt until it is drawn.</li><li>2026 CapEx guided above $20B vs $14.7B operating cash flow in one summary — flagged as a first net cash-burn year since 2019 on that definition, not yet a reported full-year result. Free cash flow, trailing twelve months to Q3 2026: $3.30B.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $94.83B · Free cash flow $6.22B · Cash &amp; short-term investments $44.10B · CapEx $8.53B · R&amp;D $6.41B · Gross margin 18.0%. Share price Nov 5, 2026 close: $343.20.</p>'+
+'<h2>9. EBITA</h2><p>Rank #9 of 10. Trailing-twelve-months EBITA <b>$3.47B</b> (operating income $3.47B, operating-income basis; amortization immaterial). Period: Oct 1, 2025 to Sep 30, 2026. EBITA share: 0.4% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 30, 2026)</h2><p>Total assets $157.5B · Cash $17.9B · Short-term investments $27.6B · Receivables (money owed by customers) $4.6B · Inventory $14.1B · Property, plant and equipment $50.6B · Long-term investments n/a · Other $36.2B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $8.1B · FY2020 $52.1B · FY2025 $137.8B · Q3 2026 $157.5B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 12.9% on the year. Growth every year, but decelerating: +52.0% (2020), +19.1% (2021), +32.5% (2022), +29.5% (2023), +14.5% (2024), +12.9% (2025).</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F; split-adjusted</span>. 1. '+wl('blackrock','BlackRock')+' 214.2M vs 150,241,185. 2. Vanguard Capital Mgmt 184.7M vs 173,442,930. 3. State Street 118.8M vs 88,651,137. 4. Geode 69.9M vs 34,701,705. 5. Invesco 58.0M vs 3,412,809. Note: Vanguard split into two separately filing advisers in Jan 2026; the 2020–2025 figures are the old combined Vanguard Group, the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. The sheet’s Section 13 shows slightly lower Q2-basis figures (BlackRock 214,123,129; Vanguard 184,023,551; State Street 117,456,756; Geode 68,910,000; Invesco 55,464,442); the Q3 figures above are the newer counts.</p>'+
+'<h2>Stakes It Holds</h2><p><b>None.</b> Tesla holds 0 stakes in the notation — 0 joint ventures <span class="label proven">PROVEN</span>. One item sits on the '+wl('watchlist')+': a $1.95B stock acquisition of an unnamed hardware company — the target is not named, so no edge can be written until it is.</p>'+
+'<h2>The Test</h2><p>See '+wl('gates','The Tesla Three Gates')+' for the full theory. In short: three gates, each with a bigger expected rise than the last, gated on whether Tesla’s leadership runs the company like a trader (the “Storonsky gate”). Gate 1 — SRAM design, May 2027 (the “NVIDIA escape”: Tesla designs its own memory so it no longer depends on '+wl('nvidia','Nvidia')+'). Gate 2 — Terafab volume, Q3 2028 (Tesla finds a way to make its own SRAM at scale). Gate 3 — Optimus deployment (SRAM in consumer products; first outside-company Optimus deliveries planned end 2027, at volume after Q3 2028). <b>SELL on Optimus release</b> — the one exception to the “just fucking hold” motto, Tesla only. Brenden’s rationale (Nov 17, 2026): once Optimus is shipping to consumers, most of the leg work is already done — the story is realized, so sell despite the hype train on the drop. Assumption <span class="label unv">UNVERIFIED</span>: the memory bottleneck is what is holding Tesla’s price back. Standing watch: if Tesla makes a deal with '+wl('micron')+', flag it early — take the signal before Wall Street prices it in. (A Nov 3 feed claim of a Micron–Tesla allocation deal was corrected Nov 4 — not a live deal.)</p>'+
+'<h2>Who’s in Charge</h2><p>Elon Musk, chief executive officer.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 3, Nov 17). In Brenden’s words: once Optimus ships to consumers most of the leg work is done — the story is realized, so sell despite the hype train.</p>' };
+
+P.intel = { title:"Intel", cat:"Companies", tag:"Intel Corporation · INTC · Pig · EBITA rank #10",
+infobox: ib("Intel Corporation (INTC)", [["Tranche","Pig"],["EBITA rank","#10 of 10 ($2.66B)"],["Fiscal year","Ends late December (last Saturday)"],["CEO","Lip-Bu Tan"],["Key project","Foundry — making chips for others"],["Camera line","“Tesla proves the foundry works.”"]]),
+body:'<p><b>Intel</b> is the old giant of chips, rebuilding itself as a foundry — a company that makes chips designed by others, like '+wl('tsmc','TSMC')+' does. The bet is the 14A process (Intel’s newest chip-making technology): if outside customers trust Intel to make their chips, the foundry works. '+wl('tesla')+' is the first outside customer named for 14A. Intel’s finances are the weakest in the index: free cash flow has been negative four years running, and the spending gap is being funded from outside, not from operations.</p>'+
+'<h2>1. At a Glance</h2><p>2026 CapEx guide more than $20B, up more than 11% vs the prior $18B guide, after a flat-to-down start to the year. 2027 spending is up “meaningfully,” with no dollar figure given. Signal: <b>RE-ACCELERATING</b> (from cuts). Financing verdict: cash-burn / externally funded CapEx — the gap is funded from outside, not from operations.</p>'+
+'<h2>2. Spending</h2><p>CapEx by year ($B, net property-and-equipment-change series — gross additions are higher, so the combined total is not gross-comparable to peers): 2022 $24.844 · 2023 $25.750 · 2024 $23.944 · 2025 $14.646 · 2026 guide more than $20B. 2025 was 0.59× 2022 — declining, the opposite direction from the rest of the index. R&amp;D by year ($B): 2022 $17.53 · 2023 $16.05 · 2024 $16.55 · 2025 $13.77. R&amp;D as a share of revenue — 27.8% (2022), 29.6% (2023), 31.2% (2024), 26.1% (2025) — is the highest in the index by far; it peaked in 2024 and fell in 2025 on cost cuts. First half of 2026: CapEx $6.192B, R&amp;D $6.743B, combined $12.935B (quarterly gross CapEx: Q1 $4.963B, Q2 $2.652B). Warning: 2026 is partial-year only — do <b>not</b> compare it to full prior years.</p>'+
+'<h2>3. Profitability</h2><p>Gross margin (the share of revenue left after the direct cost of making the product): 2022 42.6% · 2023 40.0% · 2024 32.7% · 2025 34.8% · 2026 not reported. Gross profit / revenue ($B): 2022 $26.87 / $63.05 · 2023 $21.71 / $54.23 · 2024 $17.35 / $53.10 · 2025 $18.38 / $52.85. The margin collapsed from 42.6% to 32.7% in FY2024 and recovered only to 34.8% — the anti-AI margin story in the index. (One aggregator lists 2022 gross profit as $27.79B, about 44% — not used; the $26.87B figure comes from the 10-K.)</p>'+
+'<h2>4. Financial Position</h2><p>Revenue, free cash flow (cash left after spending), cash and short-term investments, and total debt ($B). Total debt means borrowings plus finance leases, not counting operating leases.</p>'+finTable([["2022","$63.05","−$9.62","$28.34","$42.05"],["2023","$54.23","−$14.28","$25.03","$49.27"],["2024","$53.10","−$15.66","$22.06","$50.01"],["2025","$52.85","−$4.95","$37.42","$46.59"]])+'<p>Net debt by year: 2022 $13.71B · 2023 $24.24B · 2024 $27.95B · 2025 $9.17B. Free cash flow was negative all four years. Operating cash flow fell from $15.43B in 2022 to $9.70B in 2025, while financing cash flow was +$11.59B in 2025 — the gap was funded externally, not by operations.</p>'+
+'<h2>5. Operations</h2><ul><li><b>Intel Ohio One, Fab 1/2</b>, New Albany, Ohio — BEING BUILT. $28–30B reported; $5B spent in total by May 2026 in one report. First major truss installed Oct 21, 2026. Fab 1 construction finishes 2030, production 2030–31; Fab 2 finishes 2031, production 2032. The original 2025 production target has slipped about five years. No major outside customer announced. Power (MW) n/r.</li><li><b>Intel Fab 62</b>, Chandler, Arizona — BEING BUILT. 14A process / High-NA EUV (the newest chip-printing machines). Tool move-in began Oct 2026; high-volume manufacturing from 2028 reported. MW n/r. Fab 62 is part of the SCIP joint venture with '+wl('brookfield')+' (Intel 51%, Brookfield 49%).</li></ul>'+
+'<h2>6. Outlook</h2><p>2026 CapEx more than $20B; 2027 up meaningfully, no dollar figure. Prior 2026 guide was $18B; before that, flat-to-down. The change is more than +$2B vs the $18B base, and the direction has reversed from flat-to-down. No AI / data-center split is disclosed. Data Center and AI revenue was $6.3B in Q2 2026, up 59% year-on-year (context only, not spend). Backlog (RPO — money customers have committed to pay): no comparable figure found — a gap. Cuts or pauses: no 2026 CapEx cut. Prior era: the 2024–25 cost programme (operating-expense targets of $17B in 2025 / $16B in 2026, a headcount cut of more than 15%, CapEx down 20% in the 2024 plan) is historical context, not the current guide.</p>'+
+'<h2>7. Notes, Risks, and Sources</h2><ul><li>Operating cash flow fell from $15.43B (2022) to $9.70B (2025) while financing cash flow was +$11.59B in 2025 — the gap was funded externally, not by operations.</li><li>Definition conflict: a separate 2025 summary gives adjusted free cash flow of −$1.6B for 2025 vs the −$4.95B GAAP (standard accounting) figure above, after about $1.6B of government grants and partner contributions.</li><li>Gross margin collapsed from 42.6% to 32.7% (FY2024), recovering only to 34.8% — the anti-AI margin story in the index.</li></ul>'+
+'<h2>8. Consensus — Latest Full Year</h2><p>2025 — Revenue $52.85B · Free cash flow −$4.95B · Cash &amp; short-term investments $37.42B · CapEx $14.65B · R&amp;D $13.77B · Gross margin 34.8%. Share price Nov 5, 2026 close: $52.25.</p>'+
+'<h2>9. EBITA</h2><p>Rank #10 of 10. Trailing-twelve-months EBITA <b>$2.66B</b> (operating income $1.76B + amortization $0.90B, from Intel’s own cash-flow line). Period: Sep 27, 2025 to Sep 26, 2026. EBITA share: 0.3% of the ten-company total.</p>'+
+'<h2>10. Latest Balance Sheet (Sep 26, 2026)</h2><p>Total assets $228.6B · Cash $21.8B · Short-term investments $32.2B · Receivables (money owed by customers) $4.1B · Inventory $13.1B · Property, plant and equipment $105.3B · Long-term investments $8.8B · Other $20.4B.</p>'+
+'<h2>11. Assets History</h2><p>Total assets: FY2015 $101.5B · FY2020 $153.1B · FY2025 $211.4B · Q3 2026 $228.6B.</p>'+
+'<h2>12. Assets Year-on-Year</h2><p>FY2025 total assets up 7.6% on the year. Steady single-digit growth — +8.1% (2022), +5.2% (2023), +2.6% (2024), +7.6% (2025); the slowest growth in the index alongside the telecoms.</p>'+
+'<h2>13. Top Shareholders</h2><p>Top 5 holders, shares held, Q3 2026 (Sep 30, 2026) vs 2020 <span class="label proven">PROVEN · SEC 13F</span>. 1. '+wl('blackrock','BlackRock')+' 460.5M vs 309,411,663 — added 34.0M shares in Q3 (+7.98%). 2. Vanguard Capital Mgmt 309.3M vs 339,140,220 — added 24.1M shares in Q3 (+8.44%). 3. State Street 223.3M vs 177,408,741. 4. '+wl('nvidia')+' 161.1M vs no position in 2020 (the stake closed Dec 2025) — Nvidia <b>cut</b> its Intel stake in Q3 2026 from 214,776,632 shares to 161,082,488, down 25%, before Intel’s slide (Intel closed Sep 30 at $120.23 and was $59.66 by Nov 13). The sheet’s Section 13 still shows the Q2 figure of 214,776,632; the Q3 figure of 161,082,488 is the current count. 5. Invesco 169.8M vs 14,068,978. Note: Vanguard split into two separately filing advisers in Jan 2026; the 2020–2025 figures are the old combined Vanguard Group, the 2026 figure is Vanguard Capital Mgmt only — the apparent drop is not selling. The big index funds all added Intel in Q3, consistent with the new shares Intel issued in its Aug 2026 equity offering. Two holders sit outside the top-5 13F list but matter: the U.S. Government holds about 433,323,000 shares direct (about 8–9.9%) plus a 5-year warrant for 240,516,150 shares at $20, exercisable only if Intel stops owning at least 51% of its foundry business <span class="label proven">PROVEN · Intel 8-K, Aug 2025</span>; '+wl('softbank','SoftBank')+' holds 86,956,522 shares, $12.14B <span class="label reported">REPORTED · Q2 2026 13F</span>, hedged with prepaid forward collars in Aug 2026 — the shares are still held, but the economic exposure is capped and floored.</p>'+
+'<h2>Stakes It Holds</h2><p>Intel holds stakes in <b>6 partners</b> (cash out — it spent to buy in): '+wl('figure','Figure AI')+' via Intel Capital (Intel’s investment arm) — Series A extension + B + C <span class="label reported">REPORTED</span>, amounts n/r; the majority of IMS Nanofabrication <span class="label proven">PROVEN</span> — '+wl('tsmc','TSMC')+' holds about 10%; 76% of Mobileye (the 13F portion is 50,000,000 Class A shares, $369.5M) <span class="label proven">PROVEN</span>; Joby Aviation, 15,316,315 shares, $92.7M (Q3 13F) <span class="label proven">PROVEN</span>; IREN, 1,290,365 shares, $52.8M, added in Q3 2026 (Q3 13F) <span class="label proven">PROVEN</span>; 51% of the Arizona SCIP joint venture ('+wl('brookfield')+' 49%) — Fab 52 operating, Fab 62 building <span class="label proven">PROVEN</span>. Historical note: Apollo is gone — Intel repurchased Apollo’s 49% of Ireland Fab 34 on Apr 8, 2026 for $14.2B; Fab 34 is now 100% Intel.</p>'+
+'<h2>The Test</h2><p>Intel has no company-specific sell test in this project. The signal to watch is the foundry: '+wl('tesla')+' is the first outside customer named for Intel’s 14A process — it proves the foundry bet works, even though the revenue comes later. The signal now is validation, not sales. Two more facts from the drill work: in Q3 2026, Intel’s data-center operating profit passed its PC operating profit — the server business is now earning more than the PC business — and CEO Lip-Bu Tan has made Xeon server-chip supply the priority over PC chips.</p>'+
+'<h2>Who’s in Charge</h2><p>Lip-Bu Tan, chief executive officer.</p>'+
+'<h2>On Camera</h2><p><b>READY</b> (drill 8, Nov 18). Camera line: “Tesla proves the foundry works.”</p>' };
+</script>
+<script>
+P.berkshire = { title:"Berkshire Hathaway", cat:"Partners", tag:"Partner ledger · built Nov 12, 2026",
+infobox: ib("Berkshire Hathaway Inc. (BRK.A / BRK.B)", [["Type","Partner ledger, built Nov 12, 2026"],["Links to the ten", wl('apple','Apple')+" · "+wl('alphabet','Alphabet')]]),
+body:'<p><b>Berkshire Hathaway</b> is the investment company led by Warren Buffett. It qualifies for its own partner ledger because it is publicly traded and holds shares in two of the ten.</p><h2>What it holds in the ten</h2><ul><li>'+wl('apple')+': 227,917,808 shares, $66.0B — Berkshire’s #1 holding <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span>. In the notation: <span class="notation">AAPL(BRK)</span>.</li><li>'+wl('alphabet')+': 78,791,167 Class A shares + 27,188,433 Class C shares = 106.0M shares, about $37.8B, including a $10B private placement in Jun 2026 <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span>. In the notation: <span class="notation">GOOGL(BRK)</span>.</li></ul><h2>Bridge</h2><p>Berkshire connects Apple and Alphabet: <span class="notation">AAPL(BRK)GOOGL</span>. It is the only partner that holds both.</p>' };
+P.softbank = { title:"SoftBank", cat:"Partners", tag:"Partner ledger · built Nov 12, 2026",
+infobox: ib("SoftBank Group Corp. (TSE: 9984)", [["Type","Partner ledger, built Nov 12, 2026"],["Links to the ten", wl('intel','Intel')+" · "+wl('tsmc','TSMC')]]),
+body:'<p><b>SoftBank</b> is a Japanese investment group. It qualifies for its own partner ledger because it is publicly traded and holds shares in two of the ten.</p><h2>What it holds in the ten</h2><ul><li>'+wl('intel')+': 86,956,522 shares, $12.14B <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span>. In the notation: <span class="notation">INTC(SB)</span>. In Aug 2026 SoftBank hedged the whole stake with prepaid forward collars — a financial contract that caps how much the shares can gain or lose — raising about $7.4B. The shares are still held; the economic exposure is capped and floored <span class="label reported">REPORTED</span>.</li><li>'+wl('tsmc','TSMC')+': 565,000 ADRs (American depositary receipts — US-traded certificates for foreign shares), $269.8M, trimmed in Q2 2026 <span class="label reported">REPORTED · Q2 2026 13F; Q3 not yet re-checked</span>. In the notation: <span class="notation">TSM(SB)</span>.</li></ul><h2>Bridge</h2><p>SoftBank connects Intel and TSMC: <span class="notation">INTC(SB)TSM</span> (the Intel leg is hedged).</p>' };
+P.brookfield = { title:"Brookfield", cat:"Partners", tag:"Partner ledger · built Nov 12, 2026",
+infobox: ib("Brookfield Asset Management Ltd. (NYSE: BAM)", [["Type","Partner ledger, built Nov 12, 2026"],["Links to the ten", wl('intel','Intel')+" · "+wl('nvidia','Nvidia')]]),
+body:'<p><b>Brookfield</b> is a large asset manager (a company that invests money for clients, including in infrastructure like data centers and chip fabs). It qualifies for its own partner ledger because it is publicly traded and shares ownership with two of the ten.</p><h2>What it holds in the ten</h2><ul><li>'+wl('intel')+': 49% of the Arizona SCIP joint venture (Intel 51%). The venture owns two Intel fabs in Chandler, Arizona: Fab 52 is operating, Fab 62 is building <span class="label proven">PROVEN</span>.</li><li>'+wl('nvidia')+': the Brookfield AI Infrastructure Fund (BAIIF), where Nvidia is an anchor investor; $2B <span class="label reported">REPORTED</span> (single-source, unconfirmed); fund existence <span class="label proven">PROVEN</span>.</li></ul><h2>Bridge</h2><p>Brookfield connects Intel and Nvidia: <span class="notation">INTC(BAM)NVDA</span> — the SCIP venture with Intel plus the AI fund with Nvidia.</p>' };
+P.blackrock = { title:"BlackRock", cat:"Partners", tag:"Largest holder of the ten · holds all ten companies",
+infobox: ib("BlackRock, Inc. (BLK)", [["Role","Largest holder of the ten"],["Holds","All ten companies"]]),
+body:'<p><b>BlackRock</b> is the world’s largest asset manager — a company that invests money for clients, mostly through index funds (funds that automatically buy a little bit of every company in an index). It is the biggest single holder in the Monkey Pig web.</p><h2>What it holds in the ten</h2><p>Q3 2026, Sep 30, 2026 — <span class="label proven">PROVEN · SEC 13F tables</span>. BlackRock holds 100M+ shares in 9 of the 10, and is the #1 holder of every company except where noted:</p><ul><li>'+wl('nvidia')+' 1,940.9M</li><li>'+wl('tsmc','TSMC')+' 19.5M ADRs</li><li>'+wl('alphabet')+' 459.0M Class A</li><li>'+wl('microsoft')+' 607.1M</li><li>'+wl('micron')+' 104.8M</li><li>'+wl('apple')+' 1,157.1M</li><li>'+wl('intel')+' 460.5M</li><li>'+wl('tesla')+' 214.2M</li><li>'+wl('verizon')+' 404.6M</li><li>'+wl('att','AT&T')+' 548.7M</li></ul><p>In Q3 2026 BlackRock added 34.0M Intel shares (+7.98%) as Intel issued new shares in Aug 2026.</p><h2>Bridge</h2><p>BlackRock holds all ten, so it bridges all 45 pairs — every possible pairing of two index companies runs through BlackRock. (That is a fact about index funds, not a sign BlackRock is making active bets: index funds hold what the index holds.)</p><h2>Note</h2><p>BlackRock does not have a full partner ledger in this project. Its role in the web is as a holder, recorded in each company’s Top Shareholders section and in the bridges. It also co-owns the Gigapower fiber venture with '+wl('att','AT&T')+' through GIP (Global Infrastructure Partners), and co-founded the AI Infrastructure Partnership (AIP) — AIP’s status as an edge is borderline and awaits Brenden’s ruling.</p>' };
+P.ast = { title:"AST SpaceMobile", cat:"Shared assets", tag:"Shared asset · held by AT&T, Verizon, Alphabet",
+infobox: ib("AST SpaceMobile, Inc. (NASDAQ: ASTS)", [["Type","Shared asset"],["Held by", wl('att','AT&T')+" · "+wl('verizon','Verizon')+" · "+wl('alphabet','Alphabet')]]),
+body:'<p><b>AST SpaceMobile</b> is building a network of satellites that connect directly to ordinary phones. Three of the ten hold its shares in parallel — each holds its own shares; this is <b>not</b> a joint venture.</p><h2>The three legs</h2><p><span class="label proven">PROVEN</span></p><ul><li>'+wl('att','AT&T')+': a $35.0M subordinated convertible note (a loan that converts into shares) bought Jan 16, 2024, converted Feb 3, 2025 into 6,260,440 Class A shares (about 2.8% of Class A). AT&amp;T’s Chris Sambar (EVP, Head of Network) joined AST’s board <span class="label reported">REPORTED</span>.</li><li>'+wl('verizon')+': $35M in convertible notes bought May 2024 (part of a $100M Verizon commitment: $65M commercial prepayments + $35M notes), converted Jan/Feb 2025 when AST forced conversion of all 2024 notes. Share count n/r.</li><li>'+wl('alphabet')+': 8,943,486 shares, $526,413,586 at Sep 30, 2026 <span class="label proven">PROVEN · Q3 13F</span>.</li></ul><h2>How it happened</h2><p>Jan 18, 2024: AST announced $110M of 10-year convertible notes from AT&amp;T, Google, and Vodafone. May 2024: Verizon added $35M in notes. Jan 22, 2025: AST forced conversion of all 2024 notes (about $148.5M of principal plus interest, turning into 25,818,541 shares). The commercial prepayments ($65M from Verizon, $20M AT&amp;T and $25M Vodafone revenue commitments) are commercial deals, <b>not</b> ownership — they don’t count as edges.</p><h2>Why it matters</h2><p>AST SpaceMobile is '+wl('att','AT&T')+'’s satellite partner and one of '+wl('verizon')+'’s, so it sits right next to the '+wl('satellite','Satellite Joint Venture')+' story. It bridges three pairs: T–VZ, T–GOOGL, VZ–GOOGL. It qualifies for its own partner ledger (publicly traded + 2+ M&amp;P links) but Brenden has not ruled on building one.</p>' };
+P.marvell = { title:"Marvell", cat:"Shared assets", tag:"Shared asset · held by Nvidia, Alphabet · noted Nov 20, 2026",
+infobox: ib("Marvell Technology, Inc. (NASDAQ: MRVL)", [["Type","Shared asset"],["Held by", wl('nvidia','Nvidia')+" · "+wl('alphabet','Alphabet')],["Note","Noted Nov 20, 2026 — not stressed about, no ledger built"]]),
+body:'<p><b>Marvell</b> makes chips and networking parts for data centers. '+wl('nvidia')+' and '+wl('alphabet')+' both hold equity-linked stakes in it in parallel — <b>not</b> a joint venture.</p><h2>The two legs</h2><p><span class="label proven">PROVEN</span></p><ul><li>'+wl('nvidia')+': $2.0B cash for 2,000,000 shares of Series A Convertible Preferred stock (Mar 31, 2026), convertible into up to 21,778,000 common shares <span class="label proven">PROVEN · Marvell 8-K + Q2 FY2027 10-Q</span>.</li><li>'+wl('alphabet')+': a warrant (the right to buy shares at a set price) issued Aug 18, 2026 to Google LLC for up to 58,970,907 common shares at $206.58 per share, exercisable until Aug 18, 2033; Google paid nothing for the warrant <span class="label proven">PROVEN · Marvell 8-K Aug 19, 2026</span>. Alphabet’s own Q3 10-Q does not mention Marvell — the warrant is disclosed only in Marvell’s filing.</li></ul><h2>The Lumentum deal</h2><p>Marvell agreed Nov 2, 2026 to acquire Lumentum in a $115B all-stock deal (close expected H1 2028) <span class="label reported">REPORTED</span>. '+wl('nvidia','Nvidia')+' also holds $2B of Lumentum convertible preferred — after the close, Nvidia’s Marvell and Lumentum positions consolidate into one Marvell exposure. Noted Nov 20, 2026: Marvell is a shared exposure — if Marvell stumbles, two of the ten feel it through the same channel. Brenden: noted, not stressed about it. No ledger built.</p>' };
+P.openai = { title:"OpenAI", cat:"Shared assets", tag:"Shared asset · held by Microsoft, Nvidia",
+infobox: ib("OpenAI", [["Type","Shared asset"],["Held by", wl('microsoft','Microsoft')+" · "+wl('nvidia','Nvidia')]]),
+body:'<p><b>OpenAI</b> builds AI models (including ChatGPT). '+wl('microsoft')+' and '+wl('nvidia')+' both hold OpenAI equity in parallel — <b>not</b> a joint venture.</p><h2>The two legs</h2><ul><li>'+wl('microsoft')+': about 24% as-converted at Sep 30, 2026, with $13.0B committed and $12.0B funded <span class="label proven">PROVEN</span>.</li><li>'+wl('nvidia')+': $30B direct equity in the Feb 27, 2026 round <span class="label reported">REPORTED</span>; % n/r.</li></ul><h2>Bridge</h2><p>OpenAI connects Microsoft and Nvidia: MSFT–NVDA.</p>' };
+P.mistral = { title:"Mistral AI", cat:"Shared assets", tag:"Shared asset · held by Microsoft, Nvidia",
+infobox: ib("Mistral AI", [["Type","Shared asset"],["Held by", wl('microsoft','Microsoft')+" · "+wl('nvidia','Nvidia')]]),
+body:'<p><b>Mistral AI</b> is a European AI company building AI models. '+wl('microsoft')+' and '+wl('nvidia')+' both hold Mistral equity in parallel — <b>not</b> a joint venture.</p><h2>The two legs</h2><p><span class="label reported">REPORTED</span></p><ul><li>'+wl('microsoft')+': €15M strategic investment in Feb 2024 (under 1%), plus M12 (Microsoft’s venture fund) as a Series B/C co-investor; M12 amounts n/r.</li><li>'+wl('nvidia')+': Series B/C/D participant; amounts and % n/r.</li></ul><h2>Bridge</h2><p>Mistral connects Microsoft and Nvidia: MSFT–NVDA.</p>' };
+P.verily = { title:"Verily", cat:"Shared assets", tag:"Shared asset · held by Alphabet, Nvidia",
+infobox: ib("Verily Health Inc. (formerly Verily Life Sciences)", [["Type","Shared asset"],["Held by", wl('alphabet','Alphabet')+" · "+wl('nvidia','Nvidia')]]),
+body:'<p><b>Verily</b> is a health-technology company (Alphabet’s life-sciences arm, spun out in Mar 2026). '+wl('alphabet')+' and '+wl('nvidia')+' both hold Verily equity in parallel — <b>not</b> a joint venture.</p><h2>The two legs</h2><p><span class="label proven">PROVEN</span></p><ul><li>'+wl('alphabet')+': minority investor after the Mar 2026 spin-out; % n/r.</li><li>'+wl('nvidia')+': became an equity investor Sep 9, 2026; amount and % n/r.</li></ul><h2>Bridge</h2><p>Verily connects Alphabet and Nvidia: GOOGL–NVDA.</p>' };
+P.figure = { title:"Figure AI", cat:"Shared assets", tag:"Shared asset · held by Microsoft, Nvidia, Intel · REPORTED",
+infobox: ib("Figure AI", [["Type","Shared asset"],["Held by", wl('microsoft','Microsoft')+" · "+wl('nvidia','Nvidia')+" · "+wl('intel','Intel')+" (via Intel Capital)"],["Status","REPORTED"]]),
+body:'<p><b>Figure AI</b> is a private humanoid-robotics company (it builds human-shaped robots). '+wl('microsoft')+', '+wl('nvidia')+', and Intel Capital (Intel’s investment arm) all hold equity in it in parallel — <b>not</b> a joint venture. '+wl('brookfield')+' and T-Mobile are also reported in the cluster <span class="label reported">REPORTED</span>.</p><h2>The legs</h2><p><span class="label reported">REPORTED</span>; amounts and % n/r.</p><ul><li>'+wl('microsoft')+': Series B.</li><li>'+wl('nvidia')+': Series B + C.</li><li>'+wl('intel')+' (Intel Capital): Series A extension + B + C.</li></ul><h2>Bridge</h2><p>Figure AI connects three pairs: MSFT–NVDA, MSFT–INTC, NVDA–INTC.</p>' };
+P.watchlist = { title:"Watchlist", cat:"More", tag:"Things that can’t be written as edges yet",
+body:'<p>Things that can’t be written as edges yet, under the standing rule: no edge until b is named or the entity exists (decided Nov 20, 2026). They stay here until they qualify. See '+wl('notation','The Notation')+'.</p><ul>'+
+'<li><b>Gui’an ('+wl('apple','Apple')+'):</b> Apple funded and co-built the Gui’an iCloud data center in China with GCBD (a Guizhou state-owned company); Apple put in about $1B <span class="label reported">REPORTED</span>. GCBD operates the facility. No joint-venture entity exists, ownership % n/r, direction unclear. Not an edge.</li>'+
+'<li><b>Alphabet’s $20B derivative:</b> a $20.0B equity derivative (a financial contract tied to shares) with forward funding commitments. The counterparty is <b>unnamed</b> in Alphabet’s 10-Q. Existence <span class="label proven">PROVEN</span>; a <span class="label reported">REPORTED</span> identification as '+wl('anthropic','Anthropic')+'-linked is unreconciled — do not merge it with <span class="notation">GOOGL(-ANT)</span>. Not an edge until the counterparty is named.</li>'+
+'<li><b>Tesla’s $1.95B buy:</b> '+wl('tesla')+' bought $1.95B of stock in an unnamed “SI hardware company.” The target is n/r. Cannot be expressed until the target is named.</li>'+
+'<li><b>Microsoft–LSEG:</b> '+wl('microsoft')+' bought about 4% of LSEG (London Stock Exchange Group) in Dec 2022 <span class="label proven">PROVEN purchase</span>. Current holding n/r — needs a re-check before it counts as a live edge.</li>'+
+'<li><b>Verizon–Yahoo:</b> a reported 10% '+wl('verizon')+' stake in Yahoo Inc. has not been verified in this sweep; needs a filings check.</li>'+
+'<li><b>Pending, not live:</b> '+wl('att','AT&T')+'’s combined fiber JV with GIP + CPP (announced Oct 6, 2026, closing H1 2027, absorbs Gigapower); '+wl('micron')+'’s up-to-$500M GlobalWafers convertible bonds (board-approved, needs a shareholder vote); '+wl('tsmc','TSMC')+'’s board-approved ceiling of up to $500M for '+wl('openai','OpenAI')+' preferred stock (purchase n/r); '+wl('nvidia')+'–Meta $3B equity (announced Oct 26, 2026, non-binding, close unconfirmed).</li></ul>' };
+P.sources = { title:"Sources and Labels", cat:"More", tag:"What PROVEN, REPORTED, and n/r mean · cutoffs and dates",
+body:'<h2>Labels</h2><ul><li><span class="label proven">PROVEN</span> — read in a filing (10-K, 10-Q, 8-K, 13F) or a company announcement.</li><li><span class="label reported">REPORTED</span> — a reputable secondary source (major newspaper, wire, or trade publication), not the filing itself.</li><li><span class="label nr">n/r</span> — not retrieved. The value was not found in the sources read. It is a gap, not a zero, and never invented.</li><li><span class="label unv">UNVERIFIED</span> — a claim that has not been checked. Labeled, never presented as settled.</li><li><b>~</b> — a rounded source figure.</li></ul>'+
+'<h2>Cutoffs and dates</h2><ul><li>Spreadsheet figures: cutoff Oct 28, 2026, plus Nov 3–6, 2026 filing updates.</li><li>Shareholder counts: Q3 2026 (Sep 30, 2026) from SEC EDGAR 13F tables, unless a page says Q2 2026 (Jun 30, 2026).</li><li>Edge records: Nov 12–20, 2026. Notation rulings: Nov 19–20, 2026.</li><li>'+wl('anthropic','Anthropic')+' facts: through Nov 21, 2026.</li><li>Fiscal years differ by company — do not compare a fiscal year to a calendar year without that note. '+wl('nvidia','Nvidia')+'’s year ends late January; '+wl('microsoft','Microsoft')+'’s June 30; '+wl('apple','Apple')+'’s late September; '+wl('micron','Micron')+'’s late August/early September; '+wl('alphabet','Alphabet')+', '+wl('intel','Intel')+', '+wl('tesla','Tesla')+', '+wl('verizon','Verizon')+', '+wl('att','AT&T')+', and '+wl('tsmc','TSMC')+' use Dec 31. TSMC reports in NT$ under IFRS; its dollar figures are converted or analyst-reported.</li></ul>'+
+'<h2>What this wiki does not do</h2><ul><li>It does not cover companies outside the ten, except as partners or shared assets linked to the ten.</li><li>It does not predict unannounced deals.</li><li>It is not trading advice. Brenden does not trade stocks.</li></ul>' };
+</script>
+<script>
+var ORDER = [
+ ["Home",[["home","Monkey Pig Index"]]],
+ ["Companies",[["nvidia","Nvidia","NVDA · #1"],["microsoft","Microsoft","MSFT · #2"],["apple","Apple","AAPL · #3"],["alphabet","Alphabet","GOOGL · #4"],["micron","Micron","MU · #5"],["tsmc","TSMC","TSM · #6"],["verizon","Verizon","VZ · #7"],["att","AT&T","T · #8"],["tesla","Tesla","TSLA · #9"],["intel","Intel","INTC · #10"]]],
+ ["Concepts",[["brendentest","The Brenden Test"],["notation","The Notation"],["anthropic","Anthropic"],["satellite","Satellite Joint Venture"],["memory","The Memory Shortage"],["gates","The Tesla Three Gates"]]],
+ ["Partners",[["berkshire","Berkshire Hathaway"],["softbank","SoftBank"],["brookfield","Brookfield"],["blackrock","BlackRock"]]],
+ ["Shared assets",[["ast","AST SpaceMobile"],["marvell","Marvell"],["openai","OpenAI"],["mistral","Mistral AI"],["verily","Verily"],["figure","Figure AI"]]],
+ ["More",[["watchlist","Watchlist"],["sources","Sources and Labels"]]]
+];
+var sidebar = document.getElementById('sidebar');
+var sbHtml = '';
+ORDER.forEach(function(g){ sbHtml += '<h4>'+g[0]+'</h4>'; g[1].forEach(function(it){ sbHtml += '<a href="#/'+it[0]+'" data-page="'+it[0]+'" data-nav="'+it[0]+'">'+it[1]+(it[2]?' <span class="tk">'+it[2]+'</span>':'')+'</a>'; }); });
+sidebar.innerHTML = sbHtml;
+function currentId(){ var h = location.hash.replace(/^#\/?/,''); return P[h] ? h : 'home'; }
+function render(){
+  var id = currentId(); var pg = P[id];
+  document.title = pg.title + ' — Monkey Pig Wiki';
+  var html = '<h1 class="article">'+pg.title+'</h1><div class="tagline">'+(pg.tag||'')+'</div>';
+  if(pg.infobox) html += pg.infobox;
+  html += pg.body;
+  html += '<div class="foot">Monkey Pig Wiki · Figures carry their labels — PROVEN (filing), REPORTED (secondary source), n/r (not retrieved). See <a href="#/sources" data-page="sources">Sources and Labels</a> for cutoffs. Not trading advice.</div>';
+  var el = document.getElementById('article'); el.innerHTML = html;
+  // Build TOC from h2s
+  var heads = el.querySelectorAll('h2');
+  if(heads.length > 2){
+    var toc = document.createElement('div'); toc.className='toc';
+    var ol = '<div class="toc-t">Contents</div><ol>';
+    heads.forEach(function(h,i){ h.id = 'sec'+i; ol += '<li><a href="#'+id+'" data-anchor="sec'+i+'">'+h.textContent+'</a></li>'; });
+    toc.innerHTML = ol + '</ol>';
+    var firstP = el.querySelector('p');
+    if(firstP && firstP.nextSibling) el.insertBefore(toc, firstP.nextSibling); else el.appendChild(toc);
+  }
+  document.querySelectorAll('[data-nav]').forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-nav')===id); });
+  sidebar.classList.remove('open');
+  window.scrollTo(0,0);
+}
+document.addEventListener('click', function(e){
+  var a = e.target.closest('[data-page]');
+  if(a){ e.preventDefault(); var target = a.getAttribute('data-page'); if(currentId()===target){ render(); } else { location.hash = '#/'+target; } return; }
+  var t = e.target.closest('[data-anchor]');
+  if(t){ e.preventDefault(); var s = document.getElementById(t.getAttribute('data-anchor')); if(s) s.scrollIntoView({behavior:'smooth'}); }
+});
+window.addEventListener('hashchange', render);
+document.getElementById('menuBtn').addEventListener('click', function(){ sidebar.classList.toggle('open'); });
+var searchInput = document.getElementById('search'); var searchBox = document.getElementById('searchResults');
+function plainText(html){ var d=document.createElement('div'); d.innerHTML=html; return d.textContent; }
+searchInput.addEventListener('input', function(){
+  var q = searchInput.value.trim().toLowerCase();
+  if(q.length < 2){ searchBox.classList.remove('open'); searchBox.innerHTML=''; return; }
+  var hits = [];
+  Object.keys(P).forEach(function(id){ var pg=P[id]; var txt=(pg.title+' '+plainText(pg.body)).toLowerCase(); if(txt.indexOf(q)>-1){ var idx=txt.indexOf(q); var snip=plainText(pg.body).slice(Math.max(0,idx-60), idx+110); hits.push({id:id,title:pg.title,snip:snip}); } });
+  if(!hits.length){ searchBox.innerHTML='<button type="button">No pages match “'+searchInput.value.trim()+'”</button>'; }
+  else { searchBox.innerHTML = hits.slice(0,10).map(function(h){ return '<button type="button" data-page="'+h.id+'"><b>'+h.title+'</b><small>…'+h.snip+'…</small></button>'; }).join(''); }
+  searchBox.classList.add('open');
+});
+searchInput.addEventListener('keydown', function(e){ if(e.key==='Enter'){ var first=searchBox.querySelector('[data-page]'); if(first){ location.hash='#/'+first.getAttribute('data-page'); searchBox.classList.remove('open'); } } });
+document.addEventListener('click', function(e){ if(!e.target.closest('.searchwrap')) searchBox.classList.remove('open'); });
+render();
+</script>
+<script>
+/* ===== Chart data — every value is taken from the wiki text itself (see Sources and Labels for labels and cutoffs). n/r values are left out, never filled in. ===== */
+var CD = {};
+CD.ebita = [
+ ["Nvidia",198.29,"Monkey"],["Microsoft",167.39,"Pig"],["Apple",162.96,"Monkey"],["Alphabet",157.90,"Monkey"],
+ ["Micron",99.34,"Monkey"],["TSMC",90.73,"Monkey"],["Verizon",32.45,"Pig"],["AT&T",23.81,"Pig"],["Tesla",3.47,"Pig"],["Intel",2.66,"Pig"]
+];
+CD.combined = [["Revenue",2096.58],["EBITA",939.00],["Cash & short-term investments",696.00],["Free cash flow",504.21],["CapEx (spending)",345.12],["R&D (research)",195.45]];
+CD.assetsGrowth = { labels:["2015","2020","2026"], values:[1450.6,2161.6,4266.2] };
+CD.pipeline = [["Under construction now",50.5],["Planned, not yet building",48.6]];
+CD.texas = [["Texas — planned",27.5],["Texas — under construction",14.2],["Whole US — planned",99.1],["Whole US — under construction",50.5]];
+CD.edges = [["Cash in — A(b)",54],["Cash out — A(-b)",68],["Index holds index — A{B}",1]];
+CD.placement = [["Alphabet",10],["Nvidia",10],["AMD (outside the ten)",2.5],["Micron",1],["Microsoft",1],["Broadcom (outside the ten)",1],["TSMC",0.5]];
+CD.antPrice = { labels:["IPO price","First trade","Day-one close","Fri Nov 20 close"], values:[83,111.50,97.17,88.91], baseline:83 };
+CD.antCommit = [["Alphabet — at least",121.3],["Microsoft — at least",47.2],["Everyone else",732.4]];
+CD.cashTest = [["Cash coming in (operating cash flow)",58.0],["Cash CapEx (spending)",39.367],["Left over (free cash flow)",18.633]];
+CD.blackrock = [["Nvidia",1940.9],["Apple",1157.1],["Microsoft",607.1],["AT&T",548.7],["Intel",460.5],["Alphabet (Class A)",459.0],["Verizon",404.6],["Tesla",214.2],["Micron",104.8],["TSMC (ADRs)",19.5]];
+CD.berkshire = [["Apple",66.0],["Alphabet",37.8]];
+CD.softbank = [["Intel",12.14],["TSMC",0.2698]];
+CD.scip = [["Intel",51],["Brookfield",49]];
+CD.co = {
+nvidia:{ name:"Nvidia",
+ capex:{labels:["2022","2023","2024","2025","2026"],values:[0.976,1.833,1.069,3.236,6.042],note:"Fiscal years ending late January. Small next to the cloud giants — Nvidia sells the chips rather than building the campuses."},
+ margin:{labels:["2022","2023","2024","2025","2026"],values:[64.9,56.9,72.7,75.0,71.1]},
+ fin:{years:["FY2024","FY2025","FY2026"],metrics:{rev:{label:"Revenue",values:[60.92,130.50,215.94]},fcf:{label:"Free cash flow",values:[27.02,60.85,96.68]},cash:{label:"Cash & investments",values:[25.98,43.21,62.56]},debt:{label:"Total debt",values:[9.71,8.46,8.47]}}},
+ balance:[["Cash",22.4],["Short-term investments",76.9],["Receivables",63.1],["Inventory",31.6],["Property, plant & equipment",14.3],["Long-term investments",51.2],["Everything else (remainder)",60.8]],
+ holders:[["BlackRock",1792.0,1940.9],["Vanguard (see note)",1920.0,1540.6],["State Street",988.2,1025.1],["FMR (Fidelity)",1741.0,932.8],["Geode",380.1,613.7]],
+ extra:{title:"Biggest stakes Nvidia holds",take:"OpenAI is the biggest cheque, then the Intel stake — the only direct link between any two of the ten.",items:[["OpenAI",30],["Intel stake (INTC{NVDA})",19.37],["Anthropic",10],["CoreWeave",4.11],["MediaTek bonds",3.5],["Coherent",2.24],["Marvell",2.0],["Lumentum",2.0],["Synopsys",1.89]],note:"Dollar values as listed in the Stakes section below, where each carries its PROVEN / REPORTED label."}
+},
+microsoft:{ name:"Microsoft",
+ capex:{labels:["2022","2023","2024","2025","2026"],values:[23.89,28.11,44.48,64.55,115.95],note:"Fiscal years ending Jun 30. FY2026 spending is nearly 5× FY2022 — that jump is the AI buildout."},
+ margin:{labels:["2022","2023","2024","2025","2026"],values:[68.4,68.9,69.8,68.8,67.9]},
+ fin:{years:["FY2024","FY2025","FY2026"],metrics:{rev:{label:"Revenue",values:[245.12,281.72,331.84]},fcf:{label:"Free cash flow",values:[74.07,71.60,66.99]},cash:{label:"Cash & investments",values:[null,null,76.84]},debt:{label:"Total debt",values:[78.78,89.32,106.89]}},finNote:"Cash & investments for FY2024–25 are n/r in this wiki, so that view only shows FY2026."},
+ balance:[["Cash",20.3],["Short-term investments",44.2],["Receivables",62.1],["Inventory",1.8],["Property, plant & equipment",346.8],["Long-term investments",37.8],["Everything else (remainder)",266.4]],
+ holders:[["BlackRock",515.5,607.1],["Vanguard (see note)",614.0,486.1],["State Street",299.1,320.7],["FMR (Fidelity)",222.3,203.8],["Geode",117.8,192.4]],
+ extra:{title:"The Brenden Test, in one picture — Sep 2026 quarter",take:"More cash came in than went out: Microsoft passes the cash test, with $18.6B left over.",items:CD.cashTest,note:"PROVEN, from the 10-Q. Cash in $58.0B minus cash CapEx $39.367B leaves free cash flow of $18.633B."}
+},
+apple:{ name:"Apple",
+ capex:{labels:["2022","2023","2024","2025","2026"],values:[10.708,10.959,9.447,12.715,9.04],note:"Fiscal years ending late September. The 2026 bar is the FY2026 figure from the Nov 3 10-K (Section 8). Flat while others spend hundreds of billions — the opt-out."},
+ margin:{labels:["2022","2023","2024","2025","2026"],values:[43.3,44.1,46.2,46.9,48.8],marginNote:"The 2026 point (48.8%) is the FY2026 figure from the Section 8 filing update."},
+ fin:{years:["FY2023","FY2024","FY2025"],metrics:{rev:{label:"Revenue",values:[383.3,391.0,416.2]},fcf:{label:"Free cash flow",values:[99.6,108.8,98.8]},cash:{label:"Cash & investments",values:[61.6,65.1,54.7]},debt:{label:"Total debt",values:[112.11,107.53,99.89]}}},
+ balance:[["Cash",36.3],["Short-term investments",20.4],["Receivables",83.7],["Inventory",14.5],["Property, plant & equipment",52.1],["Long-term investments",80.2],["Everything else (remainder)",117.3]],
+ holders:[["BlackRock",1056.5,1157.1],["Vanguard (see note)",1255.2,955.2],["State Street",638.2,622.5],["Geode",248.0,375.2],["FMR (Fidelity)",358.6,370.0]]
+},
+alphabet:{ name:"Alphabet",
+ capex:{labels:["2022","2023","2024","2025"],values:[31.485,32.251,52.535,91.447],note:"Calendar years. No 2026 bar — the partial-year figure is withheld in this wiki. The 2026 guide is $195–205B (Section 6)."},
+ margin:{labels:["2022","2023","2024","2025"],values:[55.4,56.6,58.2,59.7]},
+ fin:{years:["FY2023","FY2024","FY2025"],metrics:{rev:{label:"Revenue",values:[307.39,350.02,402.84]},fcf:{label:"Free cash flow",values:[69.50,72.76,73.27]},cash:{label:"Cash & investments",values:[110.92,95.66,126.84]},debt:{label:"Total debt",values:[14.62,15.86,51.04]}}},
+ balance:[["Cash",56.3],["Short-term investments",208.8],["Receivables",72.8],["Inventory",13.3],["Property, plant & equipment",372.8],["Long-term investments",135.2],["Everything else (remainder)",144.1]],
+ holders:[["BlackRock",406.6,459.0],["Vanguard (see note)",460.0,384.8],["FMR (Fidelity)",254.5,247.7],["State Street",227.0,242.3],["Geode",97.2,151.9]],
+ extra:{title:"Quarterly spending — the jump, quarter by quarter",take:"Spending roughly doubled in a year: about $17B in early 2025, about $45B by mid-2026.",items:null,time:{labels:["2025 Q1","2025 Q2","2025 Q3","2025 Q4","2026 Q1","2026 Q2"],values:[17.197,22.446,23.953,27.851,35.674,44.924]},note:"CapEx per quarter, $B. First half of 2026: $80.6B, against $39.6B in the first half of 2025."}
+},
+micron:{ name:"Micron",
+ capex:{labels:["2022","2023","2024","2025","2026"],values:[12.067,7.676,8.386,15.857,30.712],note:"Fiscal years ending late Aug / early Sep. The jump lands in FY2025–26, as the memory shortage bites."},
+ margin:{labels:["2022","2023","2024","2025","2026"],values:[45.2,-9.1,22.4,39.8,80.7],marginNote:"FY2026 is flagged in the wiki for a 10-K check before on-camera use."},
+ fin:{years:["FY2024","FY2025","FY2026"],metrics:{rev:{label:"Revenue",values:[25.11,37.38,133.19]},fcf:{label:"Free cash flow",values:[0.12,1.67,58.96]},cash:{label:"Cash & investments",values:[9.15,11.94,73.45]},debt:{label:"Total debt",values:[14.08,14.58,5.18]}}},
+ balance:[["Cash",38.4],["Short-term investments",5.1],["Receivables",36.2],["Inventory",10.4],["Property, plant & equipment",63.3],["Long-term investments",30.0],["Everything else (remainder)",12.5]],
+ holders:[["Vanguard (see note)",88.0,73.9],["State Street",46.2,51.1],["Capital World",1.5,18.3]],holdersNote:"BlackRock (104.8M) and Invesco (36.4M) hold Micron in 2026, but their 2020 counts are n/r, so they are not in this then-and-now chart.",
+ extra:{title:"Nearshoring — three separate buckets, never one number",take:"Three different pots of money. They are shown side by side on purpose — adding them into one headline hides what each pot is for.",items:[["Supplier plan — up to",3],["Boise expansion, to 2030",15],["Syracuse campus, 20 yrs",100]],note:"The $100B and $15B are NOT part of the $3B supplier plan. Full breakdown in Section 5 below."}
+},
+tsmc:{ name:"TSMC",
+ capex:{labels:["2022","2023","2024","2025","2026 guide"],values:[36.29,30.45,29.76,40.90,62],note:"Calendar years, US dollars. The 2026 bar is the guide midpoint — the guide is $60–64B, raised from $52–56B."},
+ margin:{labels:["2022","2023","2024","2025"],values:[59.6,54.4,56.1,59.9]},
+ fin:{years:["2022","2023","2024","2025"],metrics:{rev:{label:"Revenue",values:[75.88,69.30,90.08,122.42]},fcf:{label:"Free cash flow",values:[17.46,9.19,27.08,31.90]},cash:{label:"Cash & investments",values:[53.29,54.82,77.50,100.60]},debt:{label:"Total debt",values:[29.77,30.66,32.68,34.07]}}},
+ balance:[["Cash",113.6],["Short-term investments",12.4],["Receivables",15.2],["Inventory",13.4],["Property, plant & equipment",142.0],["Long-term investments",7.0],["Other",11.7]],
+ holders:[["Capital World",38.64,33.80],["Sanders Capital",44.06,24.46],["Fisher",27.64,18.93]],holdersNote:"Share counts are ADRs (one ADR = 5 ordinary shares). Fidelity (65.4M ADRs) and BlackRock (19.5M ADRs) lead in 2026, but their 2020 counts are n/r, so they are not in this then-and-now chart. TSMC is the one company where BlackRock is not the #1 holder — Fidelity is."
+},
+verizon:{ name:"Verizon",
+ capex:{labels:["2022","2023","2024","2025","2026 guide"],values:[23.09,18.77,17.09,17.01,16.25],note:"Calendar years. The 2026 bar is the guide midpoint ($16.0–16.5B). Spending is easing down from the C-band peak — the opposite shape from the AI builders."},
+ margin:{labels:["2022","2023","2024","2025"],values:[56.8,59.1,60.0,58.9],marginNote:"Telecom margins come from data aggregators (there is no single gross-profit line) — do not compare them directly with chip margins."},
+ fin:{years:["2022","2023","2024","2025"],metrics:{rev:{label:"Revenue",values:[136.84,133.97,134.79,138.19]},fcf:{label:"Free cash flow",values:[10.40,12.91,18.92,19.68]},cash:{label:"Cash & investments",values:[2.60,2.06,4.19,19.05]},debt:{label:"Total debt",values:[150.64,150.67,144.01,158.15]}}},
+ balance:[["Cash",4.5],["Receivables",26.4],["Inventory",2.8],["Property, plant & equipment",125.1],["Long-term investments",0.8],["Other (as listed)",29.1],["Everything else (remainder)",226.8]],
+ holders:[["BlackRock",298.75,404.6],["Vanguard (see note)",325.95,271.9],["State Street",161.03,210.6],["Charles Schwab",38.32,136.0],["Geode",64.66,108.1]]
+},
+att:{ name:"AT&T",
+ capex:{labels:["2022","2023","2024","2025"],values:[19.626,17.853,20.263,20.842],note:"Cash CapEx, calendar years. The 2026 plan ($23–24B) is “capital investment,” a broader measure, so it is not mixed into this chart — see Section 2."},
+ margin:{labels:["2022","2023","2024","2025"],values:[57.9,59.1,59.8,59.6],marginNote:"Telecom margins come from data aggregators (there is no single gross-profit line) — do not compare them directly with chip margins."},
+ fin:{years:["2022","2023","2024","2025"],metrics:{rev:{label:"Revenue",values:[120.74,122.43,122.34,125.65]},fcf:{label:"Free cash flow",values:[null,20.41,18.47,19.40]},cash:{label:"Cash & investments",values:[null,null,null,18.20]},debt:{label:"Total debt",values:[135.89,137.33,123.53,136.10]}},finNote:"Free cash flow for 2022 is n/r (the 2023–24 figures are derived, as flagged in Section 7); cash & investments are only retrieved for 2025."},
+ balance:[["Cash",10.8],["Receivables",8.0],["Inventory",2.9],["Property, plant & equipment",132.2],["Long-term investments",1.2],["Other (as listed)",49.3],["Everything else (remainder)",241.5]],
+ holders:[["BlackRock",485.57,548.7],["Vanguard (see note)",556.70,448.3],["State Street",287.82,326.6],["Geode",112.46,177.9],["Newport Trust",196.73,174.7]]
+},
+tesla:{ name:"Tesla",
+ capex:{labels:["2022","2023","2024","2025","2026 guide"],values:[7.158,8.898,11.342,8.527,20],note:"Calendar years. The 2026 bar is the guide (about $20B) — itself cut from a prior guide of more than $25B."},
+ margin:{labels:["2022","2023","2024","2025"],values:[25.6,18.2,17.9,18.0],marginNote:"The step-down from 25.6% to about 18% is explained by price cuts, not AI."},
+ fin:{years:["2022","2023","2024","2025"],metrics:{rev:{label:"Revenue",values:[81.46,96.77,97.69,94.83]},fcf:{label:"Free cash flow",values:[7.57,4.36,3.58,6.22]},cash:{label:"Cash & investments",values:[null,null,null,44.10]},debt:{label:"Total debt (borrowings only)",values:[2.05,4.66,7.88,8.15]}},finNote:"Cash & investments are n/r for 2022–24 in this table, so that view only shows 2025. Debt here is borrowings only (an older series) — see Section 4."},
+ balance:[["Cash",17.9],["Short-term investments",27.6],["Receivables",4.6],["Inventory",14.1],["Property, plant & equipment",50.6],["Other",36.2],["Everything else (remainder)",6.5]],
+ holders:[["BlackRock",150.24,214.2],["Vanguard (see note)",173.44,184.7],["State Street",88.65,118.8],["Geode",34.70,69.9],["Invesco",3.41,58.0]],
+ extra:{title:"Cortex supercomputers at Giga Texas — power in production",take:"Both Cortex clusters are already built and running. The tall bar is a target for the end of 2026, not power delivered yet.",items:[["Cortex 1 — in production (more than)",105],["Cortex 2 — in production (more than)",120],["Cortex 2 — target, end of 2026",400]],unit:"MW",note:"Megawatts (MW) measure power. Tesla’s own use only — nothing is sold from these clusters."}
+},
+intel:{ name:"Intel",
+ capex:{labels:["2022","2023","2024","2025","2026 guide"],values:[24.844,25.750,23.944,14.646,20],note:"Calendar years, net series (gross additions are higher). The 2026 bar is the guide floor — the guide is “more than $20B.” Spending fell while the rest of the index surged, and is now re-accelerating."},
+ margin:{labels:["2022","2023","2024","2025"],values:[42.6,40.0,32.7,34.8],marginNote:"The margin collapsed from 42.6% to 32.7% in FY2024 and has only partly recovered — the anti-AI margin story in the index."},
+ fin:{years:["2022","2023","2024","2025"],metrics:{rev:{label:"Revenue",values:[63.05,54.23,53.10,52.85]},fcf:{label:"Free cash flow",values:[-9.62,-14.28,-15.66,-4.95]},cash:{label:"Cash & investments",values:[28.34,25.03,22.06,37.42]},debt:{label:"Total debt",values:[42.05,49.27,50.01,46.59]}},finNote:"Free cash flow is below zero in all four years — the bars under the line are cash going out faster than it comes in."},
+ balance:[["Cash",21.8],["Short-term investments",32.2],["Receivables",4.1],["Inventory",13.1],["Property, plant & equipment",105.3],["Long-term investments",8.8],["Other",20.4],["Everything else (remainder)",22.9]],
+ holders:[["BlackRock",309.41,460.5],["Vanguard (see note)",339.14,309.3],["State Street",177.41,223.3],["Invesco",14.07,169.8]],holdersNote:"Nvidia also holds Intel — 161.1M shares in Q3 2026, cut from 214.8M in Q2 — with no position in 2020. It is the only direct holding link between any two of the ten (INTC{NVDA})."
+}
+};
+</script>
+<script>
+/* ===== Chart engine + panels ===== */
+var PAL = ["#3366cc","#14866d","#c07a12","#795cb2","#b32424","#2a7f9e","#6b7c2a","#a34a7f","#54595d","#8a5a2b"];
+var VS = {};
+function fmtV(v, unit){
+  if(v === null || v === undefined) return "n/r";
+  var s;
+  if(unit === "%") s = (Math.round(v*10)/10) + "%";
+  else if(unit === "MW") s = v + " MW";
+  else if(unit === "GW") s = v + " GW";
+  else if(unit === "M") s = v + "M";
+  else if(unit === "$") s = "$" + v;
+  else if(unit === " links") s = v + " links";
+  else if(unit === "shares") s = v + "";
+  else s = "$" + v + "B";
+  return s;
+}
+function svgOpen(w,h,label){ return '<svg viewBox="0 0 '+w+' '+h+'" role="img" aria-label="'+label.replace(/"/g,"&quot;")+'">'; }
+function hBars(items, unit, colors){
+  var max = 0; items.forEach(function(it){ if(it[1] > max) max = it[1]; });
+  if(max <= 0) max = 1;
+  var rowH = 30, H = items.length * rowH + 8, W = 640;
+  var s = svgOpen(W,H,"Bar chart: " + items.map(function(it){ return it[0]+" "+fmtV(it[1],unit); }).join(", "));
+  s += '<g font-size="12.5" fill="currentColor">';
+  items.forEach(function(it,i){
+    var y = 6 + i*rowH, w = Math.max(3, it[1]/max*330);
+    var c = colors ? colors[i % colors.length] : PAL[i % PAL.length];
+    s += '<text x="0" y="'+(y+14)+'">'+it[0]+'</text>';
+    s += '<rect x="215" y="'+y+'" width="'+w+'" height="17" fill="'+c+'"></rect>';
+    s += '<text x="'+(222+w)+'" y="'+(y+14)+'" font-weight="600">'+fmtV(it[1],unit)+'</text>';
+  });
+  return s + '</g></svg>';
+}
+function vBars(labels, values, unit, baseline){
+  var W = 640, H = 262, top = 30, bot = 34, plotH = H - top - bot;
+  var max = 0, min = 0;
+  values.forEach(function(v){ if(v !== null && v !== undefined){ if(v > max) max = v; if(v < min) min = v; } });
+  if(baseline !== undefined && baseline !== null){ if(baseline > max) max = baseline; if(baseline < min) min = baseline; }
+  if(max === min) max = min + 1;
+  var range = max - min, y0 = top + (max/range)*plotH;
+  function Y(v){ return top + ((max - v)/range)*plotH; }
+  var n = labels.length, slot = (W - 30)/n, bw = Math.min(64, slot*0.58);
+  var s = svgOpen(W,H,"Bar chart: " + labels.map(function(l,i){ return l+" "+fmtV(values[i],unit); }).join(", "));
+  s += '<g font-size="12" fill="currentColor">';
+  s += '<line x1="8" y1="'+y0+'" x2="'+(W-6)+'" y2="'+y0+'" stroke="currentColor" stroke-width="1" opacity="0.55"></line>';
+  if(baseline !== undefined && baseline !== null){
+    s += '<line x1="8" y1="'+Y(baseline)+'" x2="'+(W-6)+'" y2="'+Y(baseline)+'" stroke="#b32424" stroke-width="1.5" stroke-dasharray="6 4"></line>';
+    s += '<text x="'+(W-8)+'" y="'+(Y(baseline)-6)+'" text-anchor="end" fill="#b32424" font-size="11.5">paid '+fmtV(baseline,unit)+'</text>';
+  }
+  values.forEach(function(v,i){
+    if(v === null || v === undefined){
+      s += '<text x="'+(15 + i*slot + slot/2)+'" y="'+(H-12)+'" text-anchor="middle">'+labels[i]+'</text>';
+      s += '<text x="'+(15 + i*slot + slot/2)+'" y="'+(y0-8)+'" text-anchor="middle" fill="currentColor" opacity="0.6">n/r</text>';
+      return;
+    }
+    var x = 15 + i*slot + (slot-bw)/2, y = Y(v);
+    var yTop = Math.min(y, y0), hh = Math.max(2, Math.abs(y0 - y));
+    s += '<rect x="'+x+'" y="'+yTop+'" width="'+bw+'" height="'+hh+'" fill="'+PAL[i % PAL.length]+'"></rect>';
+    s += '<text x="'+(x+bw/2)+'" y="'+(v >= 0 ? y-6 : y+15)+'" text-anchor="middle" font-weight="600">'+fmtV(v,unit)+'</text>';
+    s += '<text x="'+(15 + i*slot + slot/2)+'" y="'+(H-12)+'" text-anchor="middle">'+labels[i]+'</text>';
+  });
+  return s + '</g></svg>';
+}
+function lineChart(labels, values, unit, baseline){
+  var W = 640, H = 262, top = 30, bot = 34, plotH = H - top - bot, L = 34, R = W - 16;
+  var max = -1e18, min = 1e18;
+  values.forEach(function(v){ if(v !== null && v !== undefined){ if(v > max) max = v; if(v < min) min = v; } });
+  if(baseline !== undefined && baseline !== null){ if(baseline > max) max = baseline; if(baseline < min) min = baseline; }
+  if(min > 0) min = Math.max(0, min - (max-min)*0.18);
+  if(max === min) max = min + 1;
+  var pad = (max-min)*0.12; max += pad; min -= pad;
+  function X(i){ return labels.length === 1 ? (L+R)/2 : L + i*((R-L)/(labels.length-1)); }
+  function Y(v){ return top + ((max - v)/(max-min))*plotH; }
+  var s = svgOpen(W,H,"Line chart: " + labels.map(function(l,i){ return l+" "+fmtV(values[i],unit); }).join(", "));
+  s += '<g font-size="12" fill="currentColor">';
+  if(min < 0) s += '<line x1="'+L+'" y1="'+Y(0)+'" x2="'+R+'" y2="'+Y(0)+'" stroke="currentColor" stroke-width="1" opacity="0.5"></line>';
+  if(baseline !== undefined && baseline !== null){
+    s += '<line x1="'+L+'" y1="'+Y(baseline)+'" x2="'+R+'" y2="'+Y(baseline)+'" stroke="#b32424" stroke-width="1.5" stroke-dasharray="6 4"></line>';
+    s += '<text x="'+R+'" y="'+(Y(baseline)-6)+'" text-anchor="end" fill="#b32424" font-size="11.5">paid '+fmtV(baseline,unit)+'</text>';
+  }
+  var pts = [];
+  values.forEach(function(v,i){ if(v !== null && v !== undefined) pts.push(X(i)+","+Y(v)); });
+  s += '<polyline points="'+pts.join(" ")+'" fill="none" stroke="#3366cc" stroke-width="2.5"></polyline>';
+  values.forEach(function(v,i){
+    s += '<text x="'+X(i)+'" y="'+(H-12)+'" text-anchor="middle">'+labels[i]+'</text>';
+    if(v === null || v === undefined){
+      s += '<text x="'+X(i)+'" y="'+(top+plotH-8)+'" text-anchor="middle" opacity="0.6">n/r</text>';
+      return;
+    }
+    s += '<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="4.5" fill="#3366cc"></circle>';
+    s += '<text x="'+X(i)+'" y="'+(Y(v)-11)+'" text-anchor="middle" font-weight="600">'+fmtV(v,unit)+'</text>';
+  });
+  return s + '</g></svg>';
+}
+function pieChart(items, unit){
+  var total = 0; items.forEach(function(it){ total += it[1]; });
+  var W = 640, H = 300, cx = 152, cy = 148, r = 128;
+  var s = svgOpen(W,H,"Pie chart: " + items.map(function(it){ return it[0]+" "+fmtV(it[1],unit)+" ("+Math.round(it[1]/total*100)+"%)"; }).join(", "));
+  var a0 = -Math.PI/2;
+  items.forEach(function(it,i){
+    var frac = total > 0 ? it[1]/total : 0, a1 = a0 + frac*Math.PI*2;
+    if(frac > 0.995){
+      s += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+PAL[i % PAL.length]+'"></circle>';
+    } else if(frac > 0){
+      var x0 = cx + r*Math.cos(a0), y0 = cy + r*Math.sin(a0), x1 = cx + r*Math.cos(a1), y1 = cy + r*Math.sin(a1);
+      var large = (a1-a0) > Math.PI ? 1 : 0;
+      s += '<path d="M '+cx+' '+cy+' L '+x0.toFixed(1)+' '+y0.toFixed(1)+' A '+r+' '+r+' 0 '+large+' 1 '+x1.toFixed(1)+' '+y1.toFixed(1)+' Z" fill="'+PAL[i % PAL.length]+'" style="stroke:var(--bg2)" stroke-width="1.5"></path>';
+    }
+    a0 = a1;
+  });
+  s += '</svg>';
+  var leg = '<ul class="vizlegend">';
+  items.forEach(function(it,i){
+    leg += '<li><span class="sw" style="background:'+PAL[i % PAL.length]+'"></span>'+it[0]+' — <b>'+fmtV(it[1],unit)+'</b> ('+(total > 0 ? Math.round(it[1]/total*1000)/10 : 0)+'%)</li>';
+  });
+  return s + leg + '</ul><p class="viznote">Whole pie: '+fmtV(Math.round(total*100)/100, unit)+'.</p>';
+}
+function holdersChart(items, unit){
+  var max = 0; items.forEach(function(it){ max = Math.max(max, it[1]||0, it[2]||0); });
+  if(max <= 0) max = 1;
+  var rowH = 52, H = items.length * rowH + 30, W = 640;
+  var s = svgOpen(W,H,"Shareholders then and now: " + items.map(function(it){ return it[0]+" 2020 "+fmtV(it[1],unit)+", 2026 "+fmtV(it[2],unit); }).join("; "));
+  s += '<g font-size="12" fill="currentColor">';
+  s += '<rect x="215" y="2" width="11" height="11" fill="#9aa0a6"></rect><text x="231" y="12">2020</text>';
+  s += '<rect x="290" y="2" width="11" height="11" fill="#3366cc"></rect><text x="306" y="12">2026 (Q3)</text>';
+  items.forEach(function(it,i){
+    var y = 24 + i*rowH;
+    var w0 = Math.max(2,(it[1]||0)/max*320), w1 = Math.max(2,(it[2]||0)/max*320);
+    s += '<text x="0" y="'+(y+22)+'">'+it[0]+'</text>';
+    s += '<rect x="215" y="'+y+'" width="'+w0+'" height="13" fill="#9aa0a6"></rect><text x="'+(222+w0)+'" y="'+(y+11)+'">'+fmtV(it[1],unit)+'</text>';
+    s += '<rect x="215" y="'+(y+16)+'" width="'+w1+'" height="13" fill="#3366cc"></rect><text x="'+(222+w1)+'" y="'+(y+27)+'">'+fmtV(it[2],unit)+'</text>';
+  });
+  return s + '</g></svg>';
+}
+function tableFor(rows, head){
+  var h = '<table class="data"><tr>' + head.map(function(x){ return '<th>'+x+'</th>'; }).join('') + '</tr>';
+  rows.forEach(function(r){ h += '<tr>' + r.map(function(c,j){ return '<td'+(j>0?' class="num"':'')+'>'+c+'</td>'; }).join('') + '</tr>'; });
+  return h + '</table>';
+}
+/* Card config kinds: time | cats | fin | holders */
+function chartBody(cfg, st){
+  var view = st.view;
+  if(cfg.kind === "time"){
+    var d = cfg.data;
+    if(view === "line") return lineChart(d.labels, d.values, cfg.unit, d.baseline);
+    if(view === "table") return tableFor(d.labels.map(function(l,i){ return [l, fmtV(d.values[i], cfg.unit)]; }), ["When", "Value"]);
+    return vBars(d.labels, d.values, cfg.unit, d.baseline);
+  }
+  if(cfg.kind === "cats"){
+    if(view === "pie") return pieChart(cfg.items, cfg.unit);
+    if(view === "table") return tableFor(cfg.items.map(function(it){ return [it[0], fmtV(it[1], cfg.unit)]; }), ["Item", "Value"]);
+    return hBars(cfg.items, cfg.unit, cfg.colors);
+  }
+  if(cfg.kind === "holders"){
+    if(view === "table") return tableFor(cfg.items.map(function(it){ return [it[0], fmtV(it[1], cfg.unit), fmtV(it[2], cfg.unit)]; }), ["Holder", "2020", "2026 (Q3)"]);
+    return holdersChart(cfg.items, cfg.unit);
+  }
+  if(cfg.kind === "fin"){
+    var m = cfg.data.metrics[st.metric || "rev"];
+    var vals = m.values, yrs = cfg.data.years;
+    if(view === "line") return lineChart(yrs, vals, cfg.unit);
+    if(view === "table"){
+      var keys = Object.keys(cfg.data.metrics);
+      var rows = yrs.map(function(y,i){ return [y].concat(keys.map(function(k){ return fmtV(cfg.data.metrics[k].values[i], cfg.unit); })); });
+      return tableFor(rows, ["Year"].concat(keys.map(function(k){ return cfg.data.metrics[k].label; })));
+    }
+    return vBars(yrs, vals, cfg.unit);
+  }
+  return "";
+}
+var CHARTS = [];
+function regCard(cfg){
+  var idx = CHARTS.length; CHARTS.push(cfg);
+  VS[idx] = { view: cfg.defView || cfg.views[0], metric: "rev", filter: "All" };
+  return idx;
+}
+function cardHTML(idx){
+  var cfg = CHARTS[idx];
+  var names = { bars:"Bars", line:"Line", pie:"Pie", table:"Table" };
+  var btns = cfg.views.map(function(v){ return '<button type="button" class="vbtn" data-vbtn="'+idx+':'+v+'" aria-pressed="'+(VS[idx].view===v)+'">'+names[v]+'</button>'; }).join('');
+  var sub = "";
+  if(cfg.kind === "fin"){
+    sub = '<div class="vizbtns" role="group" aria-label="Pick what to measure">' + Object.keys(cfg.data.metrics).map(function(k){
+      return '<button type="button" class="vbtn sub" data-mbtn="'+idx+':'+k+'" aria-pressed="'+(VS[idx].metric===k)+'">'+cfg.data.metrics[k].label+'</button>';
+    }).join('') + '</div>';
+  }
+  if(cfg.filterable){
+    sub += '<div class="vizbtns" role="group" aria-label="Filter by group">' + ["All","Monkeys","Pigs"].map(function(f){
+      return '<button type="button" class="vbtn sub" data-fbtn="'+idx+':'+f+'" aria-pressed="'+(VS[idx].filter===f)+'">'+f+'</button>';
+    }).join('') + '</div>';
+  }
+  return '<div class="vizcard'+(cfg.wide?' wide':'')+'"><h3>'+cfg.title+'</h3><p class="viztake">'+cfg.take+'</p>' +
+    '<div class="vizbtns" role="group" aria-label="Change chart type">'+btns+'</div>' + sub +
+    '<div class="vizbody" data-vbody="'+idx+'">'+chartBody(effCfg(idx), VS[idx])+'</div>' +
+    (cfg.note ? '<p class="viznote">'+cfg.note+'</p>' : '') + '</div>';
+}
+function effCfg(idx){
+  var cfg = CHARTS[idx];
+  if(cfg.filterable && VS[idx].filter !== "All"){
+    var f = VS[idx].filter;
+    var c2 = {}; for(var k in cfg) c2[k] = cfg[k];
+    c2.items = cfg.allItems.filter(function(it){ return it[2] === f; }).map(function(it){ return [it[0], it[1]]; });
+    return c2;
+  }
+  if(cfg.allItems && !cfg.items){ var c3 = {}; for(var k2 in cfg) c3[k2] = cfg[k2]; c3.items = cfg.allItems.map(function(it){ return [it[0], it[1]]; }); return c3; }
+  return cfg;
+}
+function refreshCard(idx){
+  var body = document.querySelector('[data-vbody="'+idx+'"]');
+  if(!body) return;
+  body.innerHTML = chartBody(effCfg(idx), VS[idx]);
+  var card = body.closest('.vizcard');
+  card.querySelectorAll('[data-vbtn]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-vbtn') === idx+':'+VS[idx].view ? 'true' : 'false'); });
+  card.querySelectorAll('[data-mbtn]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mbtn') === idx+':'+VS[idx].metric ? 'true' : 'false'); });
+  card.querySelectorAll('[data-fbtn]').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-fbtn') === idx+':'+VS[idx].filter ? 'true' : 'false'); });
+}
+document.addEventListener('click', function(e){
+  var b = e.target.closest('[data-vbtn],[data-mbtn],[data-fbtn]');
+  if(!b) return;
+  var kind = b.hasAttribute('data-vbtn') ? 'v' : (b.hasAttribute('data-mbtn') ? 'm' : 'f');
+  var raw = b.getAttribute(kind === 'v' ? 'data-vbtn' : (kind === 'm' ? 'data-mbtn' : 'data-fbtn'));
+  var parts = raw.split(':'); var idx = parseInt(parts[0], 10);
+  if(kind === 'v') VS[idx].view = parts[1];
+  if(kind === 'm') VS[idx].metric = parts[1];
+  if(kind === 'f') VS[idx].filter = parts[1];
+  refreshCard(idx);
+});
+/* ===== Panels per page ===== */
+function panelHTML(cards, intro){
+  return '<section class="vizpanel" aria-label="Charts"><h2>See it in pictures</h2><p class="vizintro">'+(intro || 'Charts first — tap <b>Bars</b>, <b>Line</b>, <b>Pie</b> or <b>Table</b> on any chart to change how you look at the same numbers. Nothing here is new data: every chart is drawn from the figures in the sections below, and Table view shows them exactly.')+'</p><div class="vizgrid">' + cards.join('') + '</div></section>';
+}
+function coCards(id){
+  var c = CD.co[id]; if(!c) return null;
+  var cards = [];
+  cards.push(cardHTML(regCard({ kind:"time", title:"Spending (CapEx) by year", take:"This is the building-and-equipment money, year by year. A bar shooting up means the buildout is real; a flat line means it is not.", views:["bars","line","table"], defView:"bars", unit:"$B", data:c.capex, note:c.capex.note })));
+  cards.push(cardHTML(regCard({ kind:"time", title:"Gross margin — what is left from each sale", take:"Gross margin is the share of each sale left after the direct cost of making the product. Higher means more of every dollar sticks.", views:["line","bars","table"], defView:"line", unit:"%", data:c.margin, note:c.margin.marginNote || "Gross margin by year, as listed in Section 3 below." })));
+  cards.push(cardHTML(regCard({ kind:"fin", title:"The money picture — pick a measure", take:"Tap a measure, then watch how it moves year to year. Revenue is everything coming in; free cash flow is what is left after the spending; debt is what is owed.", views:["bars","line","table"], defView:"bars", unit:"$B", data:c.fin, note:c.fin.finNote || "As listed in Section 4 below. Total debt means borrowings plus finance leases, not counting operating leases (Tesla: borrowings only — see Section 4)." })));
+  cards.push(cardHTML(regCard({ kind:"cats", title:"What the company owns — latest balance sheet", take:"One pie, every slice a kind of asset. A big “Property, plant & equipment” slice means factories and data centers; a big cash slice means money sitting ready.", views:["pie","bars","table"], defView:"pie", unit:"$B", items:c.balance, note:"Latest balance sheet, as listed in Section 10 below. Slices add up to total assets; “remainder” is everything not listed separately." })));
+  cards.push(cardHTML(regCard({ kind:"holders", title:"Biggest holders — 2020 vs 2026", take:"Grey is 2020, blue is Q3 2026. Longer blue bars mean the big funds hold more than they did — usually because the company issued new shares or joined more indexes, not because anyone made a bold bet.", views:["bars","table"], defView:"bars", unit:"M", items:c.holders, note:(c.holdersNote ? c.holdersNote + " " : "") + "Shares held, millions, PROVEN from SEC 13F tables (Section 13). Vanguard note: Vanguard split into two separately filing advisers in Jan 2026, so its 2026 bar (Vanguard Capital Mgmt only) looks smaller without any selling — combined, Vanguard is still the largest holder where the wiki says so." })));
+  if(c.extra){
+    var ex = c.extra;
+    var ecfg = ex.time
+      ? { kind:"time", title:ex.title, take:ex.take, views:["bars","line","table"], defView:"bars", unit: ex.unit || "$B", data: ex.time, note: ex.note }
+      : { kind:"cats", title:ex.title, take:ex.take, views:["bars","pie","table"], defView:"bars", unit: ex.unit || "$B", items: ex.items, note: ex.note };
+    cards.push(cardHTML(regCard(ecfg)));
+  }
+  return cards;
+}
+function enhance(){
+  var art = document.getElementById('article');
+  if(!art || art.querySelector('.vizpanel')) return;
+  var id = currentId();
+  var panel = null;
+  if(id === 'home'){
+    var old = art.querySelector('svg'); if(old) old.remove();
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"EBITA ranking — who earns the most", take:"EBITA is roughly the profit from day-to-day operations. The top four earn in a different league from the bottom two — Tesla and Intel together are smaller than Verizon alone. Use the group buttons to see Monkeys and Pigs separately.", views:["bars","pie","table"], defView:"bars", unit:"$B", allItems:CD.ebita, filterable:true, wide:true, note:"Trailing-twelve-months EBITA, per-company periods as listed on each company page. Combined total ≈ $939B: Monkeys $709.22B, Pigs $229.78B." })),
+      cardHTML(regCard({ kind:"cats", title:"The ten combined — the big buckets", take:"All ten companies together, latest full year. Revenue dwarfs everything; the spending bucket (CapEx) is the buildout itself.", views:["bars","pie","table"], defView:"bars", unit:"$B", items:CD.combined, note:"These combined figures mix fiscal years — the companies end their years on different dates — so they are not a single calendar-year total. The buckets overlap (they are different measures, not slices of one pot), so treat the pie as a size comparison." })),
+      cardHTML(regCard({ kind:"time", title:"Combined assets — the pile keeps growing", take:"Everything the ten own, added together. The pile nearly doubled from 2020 to 2026 — that growth is the buildout, in buildings, chips and gear.", views:["bars","line","table"], defView:"bars", unit:"$B", data:CD.assetsGrowth })),
+      cardHTML(regCard({ kind:"cats", title:"US data-center pipeline — building vs just planned", take:"About half the planned power is actually being built. The other half is still paper — and turning the power on is where projects slip 12–24 months.", views:["pie","bars","table"], defView:"pie", unit:"GW", items:CD.pipeline, note:"99.1 GW planned across 102 active US projects (verified, Oct 2026). “Not yet building” (48.6 GW) is the planned total minus the amount under construction." })),
+      cardHTML(regCard({ kind:"cats", title:"Texas vs the whole US pipeline", take:"Texas alone is more than a quarter of everything planned in the US — 28 of the 102 projects.", views:["bars","table"], defView:"bars", unit:"GW", items:CD.texas, note:"Gigawatts (GW) measure power capacity. Texas: 27.5 GW planned, 14.2 GW under construction." })),
+      cardHTML(regCard({ kind:"cats", title:"The ownership web — 123 links, three kinds", take:"Most links are money going out: one of the ten spending to buy into a partner. Only one link is an index company holding another index company.", views:["pie","bars","table"], defView:"pie", unit:" links", items:CD.edges, note:"Edge records, Nov 12–20, 2026. See The Notation page for what each form means." }))
+    ]);
+  }
+  else if(CD.co[id]){ panel = panelHTML(coCards(id)); }
+  else if(id === 'anthropic'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"The $26B placement — who paid what", take:"Two $10B cheques did most of it: Alphabet and Nvidia. The five from the ten put in $22.5B of the $26B.", views:["pie","bars","table"], defView:"pie", unit:"$B", items:CD.placement, note:"Amounts REPORTED; participation PROVEN. Alphabet’s separate Series H $10B is unreconciled — it is not in this chart and must never be added to it." })),
+      cardHTML(regCard({ kind:"time", title:"ANT’s first days — price vs the $83 the five paid", take:"The dashed line is $83, what the five paid. As long as the price stays above it, their stakes are worth more than they cost — on Fri Nov 20 it held, just barely (intraday low $83.05).", views:["line","bars","table"], defView:"line", unit:"$", data:CD.antPrice, note:"IPO priced Nov 18, 2026; first trading Thu Nov 19. Friday’s close is shown as $88.91 — sources differ slightly ($88.91 or $88.30)." })),
+      cardHTML(regCard({ kind:"cats", title:"Anthropic’s $900.9B of promised spending — who provides it", take:"Anthropic has promised to spend about $900.9B through 2045, mostly renting computing power. Alphabet and Microsoft are on the hook for the named slices; the rest is everyone else.", views:["bars","pie","table"], defView:"bars", unit:"$B", items:CD.antCommit, note:"Committed spending disclosed in Anthropic’s filing; about $451.6B of the $900.9B falls due before the end of 2030. The “everyone else” slice is the total minus the two named minimums." }))
+    ]);
+  }
+  else if(id === 'notation'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"The 123 edges, by kind", take:"Cash-out links — one of the ten spending to buy in — are the biggest group. There is exactly one index-holds-index link: Nvidia holding Intel.", views:["pie","bars","table"], defView:"pie", unit:" links", items:CD.edges, note:"Count after the Nov 20, 2026 rule (no edge until the partner is named) moved two items to the Watchlist: 125 → 123." }))
+    ]);
+  }
+  else if(id === 'brendentest'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"The test, in one picture — Microsoft, Sep 2026 quarter", take:"Cash in, spending, and what is left. Microsoft passes because the first bar is taller than the second — the spending is earning its keep, for now.", views:["bars","pie","table"], defView:"bars", unit:"$B", items:CD.cashTest, note:"PROVEN, from Microsoft’s 10-Q. Nine of the ten pass the cash test; Alphabet’s September-quarter test is not published in this wiki (on hold)." }))
+    ]);
+  }
+  else if(id === 'blackrock'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"What BlackRock holds in each of the ten", take:"Shares held, in millions. BlackRock is the #1 holder of nine of the ten — the exception is TSMC, where Fidelity leads (and the TSMC bar counts ADRs, a different unit).", views:["bars","table"], defView:"bars", unit:"M", items:CD.blackrock, note:"Q3 2026 (Sep 30, 2026), PROVEN from SEC 13F tables. Alphabet is Class A shares; TSMC is ADRs (one ADR = 5 ordinary shares), so its bar is not like-for-like with the others." }))
+    ]);
+  }
+  else if(id === 'berkshire'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"Berkshire’s money in the ten — $103.8B across two names", take:"Apple is the bigger bet by value, Alphabet the newer one. Together they are the whole bridge: AAPL(BRK)GOOGL.", views:["pie","bars","table"], defView:"pie", unit:"$B", items:CD.berkshire, note:"Values REPORTED, Q2 2026 13F; Q3 not yet re-checked. Apple: 227,917,808 shares. Alphabet: 106.0M shares across Class A and C, including a $10B private placement in Jun 2026." }))
+    ]);
+  }
+  else if(id === 'softbank'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"SoftBank’s money in the ten — mostly Intel", take:"The Intel stake is worth about 45× the TSMC stake. One leg is a real position; the other is a toe in the water — and the Intel leg is hedged, so its gains and losses are capped.", views:["bars","table"], defView:"bars", unit:"$B", items:CD.softbank, note:"Values REPORTED, Q2 2026 13F; Q3 not yet re-checked. Intel: 86,956,522 shares, hedged with prepaid forward collars in Aug 2026 (about $7.4B raised). TSMC: 565,000 ADRs." }))
+    ]);
+  }
+  else if(id === 'brookfield'){
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"cats", title:"The Arizona SCIP venture — who owns it", take:"A near-even split: Intel runs the fabs, Brookfield owns just under half of the venture that owns two of them.", views:["pie","bars","table"], defView:"pie", unit:"%", items:CD.scip, note:"PROVEN. Fab 52 is operating; Fab 62 is building. Brookfield’s other link to the ten is its AI Infrastructure Fund, where Nvidia is an anchor investor ($2B, REPORTED, single-source)." }))
+    ]);
+  }
+  else if(id === 'memory'){
+    var mm = CD.co.micron.margin;
+    panel = panelHTML([
+      cardHTML(regCard({ kind:"time", title:"Why the shortage lifts Micron — its margin, year by year", take:"When memory is scarce, the seller names the price. Micron’s margin swung from −9.1% in 2023 to 80.7% in 2026 — and the same shortage squeezes Apple, which has to buy the memory.", views:["line","bars","table"], defView:"line", unit:"%", data:mm, note:"Micron gross margin by fiscal year (Section 3 of the Micron page). FY2026 is flagged there for a 10-K check. The shortage test itself — inventory up and steady for two quarters — is still OPEN." }))
+    ], 'One chart tells this page’s story: the seller’s margin. The test and the timelines are in the text below.');
+  }
+  else if(id === 'gates'){
+    panel = '<section class="vizpanel" aria-label="The three gates at a glance"><h2>The three gates, at a glance</h2><p class="vizintro">Brenden’s Tesla theory as a path: each gate is bigger than the last, and the last one is the sell signal — the one exception to “just fucking hold.” The full theory is in the text below.</p><div class="steps">' +
+      '<div class="step"><div class="when">Gate 1 · May 2027</div><h4>NVIDIA escape</h4><p>Tesla designs its own SRAM (fast memory built into chips) and stops depending on Nvidia’s.</p><p><b>Signal:</b> an SRAM-design headline is a buy alert on the Tesla–Nvidia pair.</p></div>' +
+      '<div class="step"><div class="when">Gate 2 · Q3 2028</div><h4>Terafab volume</h4><p>Tesla makes its own SRAM at volume in Terafab, its planned chip plant in Grimes County, Texas ($16.8B first phase).</p><p><b>Signal:</b> Terafab updates move the Tesla–TSMC pair, either direction.</p></div>' +
+      '<div class="step"><div class="when">Gate 3 · Deliveries end 2027, volume after Q3 2028</div><h4>Optimus ships — SELL</h4><p>Optimus robots reach consumers with Tesla’s own SRAM inside. The story is realized, so sell despite the hype.</p><p><b>Signal:</b> the sell call itself.</p></div>' +
+      '</div><p class="viznote">The theory assumes the memory bottleneck is holding Tesla’s price back — that assumption is UNVERIFIED, as flagged below.</p></section>';
+  }
+  else if(id === 'satellite'){
+    panel = '<section class="vizpanel" aria-label="The venture at a glance"><h2>The venture, at a glance</h2><p class="vizintro">Three rival carriers, one shared venture, no satellites of its own — it pools their airwaves and buys coverage. It is still unnamed, with no permanent chief and no launch date; that freshness is the story.</p><div class="trio">' +
+      '<div class="who">AT&T<small>founder · partner: AST SpaceMobile</small></div>' +
+      '<div class="who">Verizon<small>founder · partners: AST SpaceMobile &amp; Skylo</small></div>' +
+      '<div class="who">T-Mobile<small>founder · plus a separate direct satellite partner</small></div></div>' +
+      '<div class="venturebox">↓ &nbsp; One satellite joint venture — end the dead zones &nbsp; ↓</div>' +
+      '<p style="text-align:center;margin:.2rem 0"><b>Owns no satellites.</b> Towers stay primary; satellites fill the gaps and back the network up. Interim CEO: Paul Roth. Agreement in principle May 14, 2026; definitive agreement signed Oct 1, 2026 <span class="label proven">PROVEN</span>.</p></section>';
+  }
+  if(!panel) return;
+  var firstH2 = art.querySelector('h2');
+  var holder = document.createElement('div');
+  holder.innerHTML = panel;
+  var node = holder.firstChild;
+  if(firstH2) art.insertBefore(node, firstH2); else art.appendChild(node);
+}
+var numBtn = document.getElementById('numToggle');
+if(numBtn){
+  numBtn.addEventListener('click', function(){
+    var on = document.body.classList.toggle('charts-only');
+    numBtn.textContent = on ? 'Tables: Off' : 'Tables: On';
+    numBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+}
+window.addEventListener('hashchange', function(){ setTimeout(enhance, 0); });
+document.addEventListener('click', function(e){ if(e.target.closest('[data-page]')) setTimeout(enhance, 0); });
+enhance();
+</script>
+</body>
+</html>
